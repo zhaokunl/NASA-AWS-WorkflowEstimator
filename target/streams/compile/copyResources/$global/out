@@ -1,0 +1,5 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/conf/application.conf,/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/target/scala-2.10/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/conf/META-INF,/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/target/scala-2.10/classes/META-INF)[0m
+[0m[[0mdebug[0m] [0m	(/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/conf/routes,/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/target/scala-2.10/classes/routes)[0m
+[0m[[0mdebug[0m] [0m	(/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/conf/META-INF/persistence.xml,/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/target/scala-2.10/classes/META-INF/persistence.xml)[0m
