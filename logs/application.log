@@ -10,3 +10,84 @@ database [default] connected at jdbc:h2:file:data/db
 2014-10-18 18:37:14,424 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
+2014-10-18 20:48:19,763 - [INFO] - from play in main 
+datasource [jdbc:h2:file:data/db;DB_CLOSE_DELAY=-1] bound to JNDI as DefaultDS
+
+2014-10-18 20:48:20,273 - [INFO] - from play in main 
+database [default] connected at jdbc:h2:file:data/db
+
+2014-10-18 20:48:20,273 - [INFO] - from application in main 
+ReactiveMongoPlugin starting...
+
+2014-10-18 20:48:20,318 - [INFO] - from application in main 
+ReactiveMongoPlugin successfully started with db 'object-collection'! Servers:
+		[localhost:27017]
+
+2014-10-18 20:48:21,914 - [INFO] - from play in main 
+Application started (Prod)
+
+2014-10-18 20:48:22,084 - [INFO] - from play in main 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+2014-10-18 20:48:35,314 - [INFO] - from application in Thread-4 
+ReactiveMongoPlugin stops, closing connections...
+
+2014-10-18 20:48:35,366 - [INFO] - from play in Thread-4 
+Starting application default Akka system.
+
+2014-10-18 20:48:35,509 - [INFO] - from application in ForkJoinPool-1-worker-7 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2014-10-18 20:50:56,787 - [INFO] - from play in main 
+datasource [jdbc:h2:file:data/db;DB_CLOSE_DELAY=-1] bound to JNDI as DefaultDS
+
+2014-10-18 20:50:57,256 - [INFO] - from play in main 
+database [default] connected at jdbc:h2:file:data/db
+
+2014-10-18 20:50:57,257 - [INFO] - from application in main 
+ReactiveMongoPlugin starting...
+
+2014-10-18 20:50:57,306 - [INFO] - from application in main 
+ReactiveMongoPlugin successfully started with db 'object-collection'! Servers:
+		[localhost:27017]
+
+2014-10-18 20:50:58,679 - [INFO] - from play in main 
+Application started (Prod)
+
+2014-10-18 20:50:58,778 - [INFO] - from play in main 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+2014-10-18 20:51:04,081 - [INFO] - from application in Thread-4 
+ReactiveMongoPlugin stops, closing connections...
+
+2014-10-18 20:51:04,123 - [INFO] - from play in Thread-4 
+Starting application default Akka system.
+
+2014-10-18 20:51:04,261 - [INFO] - from application in ForkJoinPool-1-worker-7 
+ReactiveMongo Connections stopped. [Success(Closed)]
+
+2014-10-18 20:56:17,530 - [INFO] - from play in main 
+datasource [jdbc:h2:file:data/db;DB_CLOSE_DELAY=-1] bound to JNDI as DefaultDS
+
+2014-10-18 20:56:18,011 - [INFO] - from play in main 
+database [default] connected at jdbc:h2:file:data/db
+
+2014-10-18 20:56:18,020 - [INFO] - from application in main 
+ReactiveMongoPlugin starting...
+
+2014-10-18 20:56:18,067 - [INFO] - from application in main 
+ReactiveMongoPlugin successfully started with db 'object-collection'! Servers:
+		[localhost:27017]
+
+2014-10-18 20:56:19,424 - [INFO] - from play in main 
+Application started (Prod)
+
+2014-10-18 20:56:19,540 - [INFO] - from play in main 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+2014-10-18 20:57:00,428 - [INFO] - from application in Thread-4 
+ReactiveMongoPlugin stops, closing connections...
+
+2014-10-18 20:57:00,718 - [INFO] - from application in ForkJoinPool-1-worker-7 
+ReactiveMongo Connections stopped. [Success(Closed)]
+

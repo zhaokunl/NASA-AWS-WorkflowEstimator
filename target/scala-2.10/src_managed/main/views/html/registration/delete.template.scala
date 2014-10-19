@@ -62,8 +62,8 @@ Seq[Any](format.raw/*1.36*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Sat Oct 18 18:36:21 EDT 2014
-                    SOURCE: /Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/app/views/registration/delete.scala.html
+                    DATE: Sat Oct 18 20:55:35 EDT 2014
+                    SOURCE: /Users/zhaokunli/NASA-AWS-WorkflowEstimator/app/views/registration/delete.scala.html
                     HASH: 079bb8f92d475fc9850b84d1912eebe8b393c975
                     MATRIX: 804->1|982->35|1018->88|1050->112|1088->113|1246->236|1261->242|1328->300|1367->301|1423->322|1438->328|1521->389|1562->395|1577->401|1664->466|1798->569|1831->571
                     LINES: 26->1|32->1|33->4|33->4|33->4|41->12|41->12|41->12|41->12|43->14|43->14|43->14|44->15|44->15|44->15|50->21|51->22
