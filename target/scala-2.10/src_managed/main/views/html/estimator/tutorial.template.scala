@@ -61,8 +61,8 @@ This video shows how to connect the vistrails workflow to the Einstein Website(h
 }
                 /*
                     -- GENERATED --
-                    DATE: Sat Oct 18 18:36:21 EDT 2014
-                    SOURCE: /Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/app/views/estimator/tutorial.scala.html
+                    DATE: Sat Oct 18 20:55:34 EDT 2014
+                    SOURCE: /Users/zhaokunli/NASA-AWS-WorkflowEstimator/app/views/estimator/tutorial.scala.html
                     HASH: 2cfc1bd7bf2de71445999358365b2baaa6d098ac
                     MATRIX: 877->1|901->17|940->19
                     LINES: 29->1|29->1|29->1

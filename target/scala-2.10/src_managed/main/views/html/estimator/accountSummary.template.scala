@@ -117,8 +117,8 @@ Seq[Any](format.raw/*1.20*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Sat Oct 18 18:36:21 EDT 2014
-                    SOURCE: /Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/app/views/estimator/accountSummary.scala.html
+                    DATE: Sat Oct 18 20:55:34 EDT 2014
+                    SOURCE: /Users/zhaokunli/NASA-AWS-WorkflowEstimator/app/views/estimator/accountSummary.scala.html
                     HASH: 04d5eef4a8c7eac8808696f1ca39951bbd14086f
                     MATRIX: 793->1|921->19|952->41|988->43|1013->60|1052->62|1174->148|1204->156|2625->1546
                     LINES: 26->1|30->1|31->3|32->4|32->4|32->4|39->11|39->11|107->79
