@@ -1,74 +1,57 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>Modern Web Template</title>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/main.css")'>
+</head>
+<body>
+<div class="container-fluid col-md-10 col-md-offset-1">
+    <!-- Fixed navbar -->
+    <header>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/">Modern Web Template</a>
+            </div>
+        </div>
+    </header>
 
-@import helper._ 
+    <div ng-view></div>
 
-@main("Carnegie Mellon University Sensor Data Storage"){
+    <div>
+        <footer>
+            <hr/>
+            <div>
+                <span>&copy; YourProjectName.com 2014</span>
+                <span class="pull-right">version : <span app-version></span></span>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
 
-	<div class="jumbotron">
-		<div class="row">
-			<div class="col-lg-6">
+<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js' type="text/javascript"></script>
+<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js' type="text/javascript"></script>
+<script src='@routes.Assets.at("javascripts/vendor/ui-bootstrap-tpls-0.10.0.js")' type="text/javascript"></script>
 
-				<img src='@routes.Assets.at("images/fireimp_small.jpg")' style="padding-bottom: 0;">
+<script src='@routes.Assets.at("javascripts/main.js")' type="text/javascript"></script>
 
-			</div>
-			<div class="col-lg-6">
-				<h1>Internet of Things Data Service Platform</h1>
-				<p>A federated cloud platform for mobile data-centric service
-					development and sharing.</p>
-				<p>
-					<a class="btn btn-lg btn-default"
-						href="https://drive.google.com/file/d/0B9nWqnYxEA3HSEo3Zkx2QWJEVlE/edit?usp=sharing">Getting Started &raquo;</a>
-				</p>
-			</div>
-		</div>
-	</div>
+<!-- Coffee script compilled resources-->
+<script src='@routes.Assets.at("javascripts/app.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("javascripts/common/Config.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("javascripts/directives/AppVersion.js")' type="text/javascript"></script>
 
-	<!-- Content -->
-	<div class="row">
-		<div class="col-lg-4">
-			<h2>Tutorial</h2>
-			<p>
-			Here is a simple guide on <a 
-				href="https://drive.google.com/file/d/0B0uwbnoOCGhEWGVuZjMtcDljcFE/edit?usp=sharing"
-				>how to use the platform</a>.
-			</p>
-		</div>
-		<div class="col-lg-4">
-			<h2>Visualization</h2>
-			<p>
-				A <a href="http://sensorserviceplatform.github.io/Visualization/">visualization</a> of the sensor network.
-			</p>
-		</div>
-		<div class="col-lg-4">
-			<h2>Virtual Sensor</h2>
-			<p>
-				A <a href="http://sensorserviceplatform.github.io/VirtualSensorEditor/">virtual sensor</a> tour.
-			</p>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-4">
-			<h2>Open Source</h2>
-			<p>
-				All the code is currently hosted on Github. Feel free to contribute
-				to this <a href="https://github.com/cmusv-sc">community</a>.
-			</p>
-		</div>
-		<div class="col-lg-4">
-			<h2>To Dos</h2>
-			<p>
-				Check the open <a
-					href="https://github.com/cmusv-sc/ArchF2013-Project3-FT/issues?page=1&state=open">issues</a>
-				on Github.
-			</p>
-		</div>
-		<div class="col-lg-4">
-			<h2>More information</h2>
-			<p>
-				For more information about this project, and a good general
-				overview, see the <a
-					href="https://docs.google.com/open?id=0B6VEjpK6RPgVN2Q1aDhRRjJid0U">slide
-					deck</a> covering relevant features.
-			</p>
-		</div>
-	</div>
-}
+<script src='@routes.Assets.at("javascripts/users/UserService.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("javascripts/users/UserCtrl.js")' type="text/javascript"></script>
+<script src='@routes.Assets.at("javascripts/users/CreateUserCtrl.js")' type="text/javascript"></script>
+
+</html>
