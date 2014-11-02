@@ -39,29 +39,22 @@ Overview:
 Currently we are providing APIs in 3 categores:
 
 **Category 1: Recommadation**<br/>
-   - [Log in](#22)
-   - [Log out](#8)
-   - [Account Summary](#9)
-   - [Add a device type](#10)
-   - [Add a device](#11)
-   - [Edit a sensor category](#23)
-   - [Edit a sensor type](#12)
-   - [Edit a sensor](#13)
-   - [Edit a device type](#14)
+   - [Log in](#1)
+   - [Log out](#2)
+   - [Account Summary](#3)
+   - [Log in with authentication](#4)
+   - [Tutorial](#5)
+   - [Estimator1](#6)
+   - [Estimator2](#7)
+   - [Estimator3](#8)
 
 **Category 2: Registration**<br/>
-   - [Add a user](#41)
-   - [Get a user](#42)
-   - [Add a sensor as a user](#43)
-   - [Get all sensors which has been added by a user](#44)
-   - [Get a specific sensor which has been added by a user](#45)
-
-**Category 5: User management for contest**<br/>
-   - [Add a contest user](#51)
-   - [Update a contest user](#52)
-   - [Delete a contest user](#53)
-   - [Get all contest users](#54)
-   - [Get specific contest user](#55)
+   - [Registration form](#9)
+   - [Submit](#10)
+   - [Update form](#11)
+   - [Update](#12)
+   - [Delete form](#13)
+   - [Admin page](#14)
 
 Detailed Usages:
 ----------------
