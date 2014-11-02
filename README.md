@@ -44,17 +44,19 @@ Currently we are providing APIs in 2 categores:
    - [Account Summary](#3)
    - [Log out](#4)
    - [Tutorial](#5)
-   - [Estimator1](#6)
-   - [Estimator2](#7)
-   - [Estimator3](#8)
+   - [Estimate](#6)
+   - [POST Estimator1](#7)
+   - [GET Estimator1](#8)
+   - [Estimator2](#9)
+   - [Estimator3](#10)
 
 **Category 2: Registration**<br/>
-   - [Registration form](#9)
-   - [Submit](#10)
-   - [Update form](#11)
-   - [Update](#12)
-   - [Delete form](#13)
-   - [Admin page](#14)
+   - [Registration form](#11)
+   - [Submit](#12)
+   - [Update form](#13)
+   - [Update](#14)
+   - [Delete form](#15)
+   - [Admin page](#16)
 
 Detailed Usages:
 ----------------
@@ -144,7 +146,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensor.json "http://einstein.sv.cmu.edu:9000/addSensor"
       - **Result**: HTTP 201 if the sensor metadata have been successfully added to the database, HTTP 400 if failed.
 
-6. <a name="6"></a>**Estimator1**
+6. <a name="6"></a>**Estimator**
     - **Purpose**: Edit a sensor type to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateSensorType
@@ -159,7 +161,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if the sensor type metadata has been successfully updated to the database
 
 
-7. <a name="7"></a>**Estimator2**
+7. <a name="7"></a>**POST Estimator1**
     - **Purpose**: Edit a sensor category to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateSensorCategory
@@ -173,7 +175,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensorCategory.json "http://einstein.sv.cmu.edu:9000/updateSensorCategory"
       - **Result**: HTTP 200 if the sensor category metadata has been successfully updated to the database
 
-8. <a name="8"></a>**EDIT ESTIMATION**
+8. <a name="8"></a>**GET Estimator1**
     - **Purpose**: Edit a sensor to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateSensor
@@ -187,7 +189,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensor.json "http://einstein.sv.cmu.edu:9000/updateSensor"
       - **Result**: HTTP 200 if the sensor metadata have been successfully updated to the database
       
-9. <a name="9"></a>**GET A SPECIFIC ESTIMATION CATEGORY**
+9. <a name="9"></a>**Estimator2**
     - **Purpose**: Query a specific sensor category.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getSensorCategory/<"sensorCategoryName">/<"resultFormat">
@@ -202,7 +204,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json result**: {"sensorCategoryName":sensorCategory1,"purpose":"temp"}
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-10. <a name="10"></a>**GET ALL ESTIMATIONS**
+10. <a name="10"></a>**Estimator3**
     - **Purpose**: Query all sensors.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getAllSensors/<"resultFormat">
@@ -230,18 +232,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json result**: {"sensorName": "sensor1", "sensorUserDefinedFields": "for test", "deviceUri":"www.device.com", "sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment"}
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-12. <a name="12"></a>**DELETE ESTIMATION CATEGORY**
-    - **Purpose**: Delete a sensor category from sensor data service platform.
-    - **Method**: DELETE
-    - **URL**: http://einstein.sv.cmu.edu:9000/deleteSensorCategory/<"sensorCategoryName">
-    - **Semantics**
-        - **sensorCategoryName** (string, not null): Name of the sensor category
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          1. curl -X DELETE http://localhost:9000/deleteSensorCategory/testSensorCategoryName
-      - **Result**: HTTP 201 if the sensor category metadata has been successfully deleted from the database
-
-13. <a name="13"></a>**DELETE ESTIMATION TYPE**
+12. <a name="12"></a>**DELETE ESTIMATION TYPE**
     - **Purpose**: Delete a sensor type from sensor data service platform.
     - **Method**: DELETE
     - **URL**: http://einstein.sv.cmu.edu:9000/deleteSensorType/<"sensorTypeName">
@@ -262,7 +253,6 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           1. curl -X DELETE http://localhost:9000/deleteSensor/testSensorName
       - **Result**: HTTP 201 if the sensor metadata has been successfully deleted from the database
-      
 
 15. <a name="15"></a>**ADD USER**
     - **Purpose**: Add a new user to sensor data service platform.
@@ -391,17 +381,6 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           1. curl -X DELETE http://localhost:9000/deleteContestUser/John/123
       - **Result**: HTTP 201 if the contest user has been successfully deleted
-
-23. <a name="23"></a>**GET ALL REGISTERED CONTEST USERS**
-    - **Purpose**: Query all registered contest users.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getAllContestUsers/<"resultFormat">
-    - **Semantics**: 
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getAllContestUsers/csv<br/>
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getAllContestUsers/json
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
 24. <a name="24"></a>**GET SPECIFIC REGISTERED CONTEST USER**
     - **Purpose**: Query specific registered contest user.
