@@ -36,7 +36,7 @@ Play server process ID is 26045
 ```
 Overview:
 ---------
-Currently we are providing APIs in 3 categores:
+Currently we are providing APIs in 2 categores:
 
 **Category 1: Recommadation**<br/>
    - [Log in](#1)
@@ -69,7 +69,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
             curl http://einstein.sv.cmu.edu:9000/estimator/login
       - **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
     
-2. <a name="5"></a>**Log in with authentication**
+2. <a name="2"></a>**Log in with authentication**
     - **Purpose**: Log into the website with. 
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/estimator/login
@@ -91,7 +91,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           {"timestamp":1368568896000,"value": 520,"sensorName":"sensor1"}]
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-3. <a name="22"></a>**Account Summary**
+3. <a name="3"></a>**Account Summary**
     - **Purpose**: Add a new sensor category to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensorCategory
@@ -107,7 +107,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 201 if the sensor category metadata has been successfully added to the database, HTTP 400 if the sensorCategoryName is already been used
 
 
-4. <a name="8"></a>**Log out**
+4. <a name="4"></a>**Log out**
     - **Purpose**: Add a new sensor type to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensorType
@@ -128,7 +128,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensorType.json "http://einstein.sv.cmu.edu:9000/addSensorType"
       - **Result**: HTTP 201 if the sensor type metadata has been successfully added to the database, HTTP 400 if failed.
 
-5. <a name="9"></a>**Tutorial**
+5. <a name="5"></a>**Tutorial**
     - **Purpose**: Add a new sensor to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensor
@@ -144,7 +144,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensor.json "http://einstein.sv.cmu.edu:9000/addSensor"
       - **Result**: HTTP 201 if the sensor metadata have been successfully added to the database, HTTP 400 if failed.
 
-6. <a name="12"></a>**Estimator1**
+6. <a name="6"></a>**Estimator1**
     - **Purpose**: Edit a sensor type to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateSensorType
@@ -159,7 +159,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if the sensor type metadata has been successfully updated to the database
 
 
-7. <a name="23"></a>**Estimator2**
+7. <a name="7"></a>**Estimator2**
     - **Purpose**: Edit a sensor category to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateSensorCategory
@@ -173,7 +173,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensorCategory.json "http://einstein.sv.cmu.edu:9000/updateSensorCategory"
       - **Result**: HTTP 200 if the sensor category metadata has been successfully updated to the database
 
-8. <a name="13"></a>**EDIT ESTIMATION**
+8. <a name="8"></a>**EDIT ESTIMATION**
     - **Purpose**: Edit a sensor to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateSensor
@@ -187,7 +187,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensor.json "http://einstein.sv.cmu.edu:9000/updateSensor"
       - **Result**: HTTP 200 if the sensor metadata have been successfully updated to the database
       
-9. <a name="32"></a>**GET A SPECIFIC ESTIMATION CATEGORY**
+9. <a name="9"></a>**GET A SPECIFIC ESTIMATION CATEGORY**
     - **Purpose**: Query a specific sensor category.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getSensorCategory/<"sensorCategoryName">/<"resultFormat">
@@ -202,7 +202,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json result**: {"sensorCategoryName":sensorCategory1,"purpose":"temp"}
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-10. <a name="35"></a>**GET ALL ESTIMATIONS**
+10. <a name="10"></a>**GET ALL ESTIMATIONS**
     - **Purpose**: Query all sensors.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getAllSensors/<"resultFormat">
@@ -215,7 +215,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json result**: [{"sensorName": "sensor01", "sensorUserDefinedFields": "for test", "deviceUri": "www.device.com/001","sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment", "purpose": "test only"}]
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-11. <a name="36"></a>**GET A SPECIFIC ESTIMATION**
+11. <a name="11"></a>**GET A SPECIFIC ESTIMATION**
     - **Purpose**: Query a specific sensor.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getSensor/<"sensorName">/<"resultFormat">
@@ -230,7 +230,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json result**: {"sensorName": "sensor1", "sensorUserDefinedFields": "for test", "deviceUri":"www.device.com", "sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment"}
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-12. <a name="24"></a>**DELETE ESTIMATION CATEGORY**
+12. <a name="12"></a>**DELETE ESTIMATION CATEGORY**
     - **Purpose**: Delete a sensor category from sensor data service platform.
     - **Method**: DELETE
     - **URL**: http://einstein.sv.cmu.edu:9000/deleteSensorCategory/<"sensorCategoryName">
@@ -241,7 +241,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           1. curl -X DELETE http://localhost:9000/deleteSensorCategory/testSensorCategoryName
       - **Result**: HTTP 201 if the sensor category metadata has been successfully deleted from the database
 
-13. <a name="16"></a>**DELETE ESTIMATION TYPE**
+13. <a name="13"></a>**DELETE ESTIMATION TYPE**
     - **Purpose**: Delete a sensor type from sensor data service platform.
     - **Method**: DELETE
     - **URL**: http://einstein.sv.cmu.edu:9000/deleteSensorType/<"sensorTypeName">
@@ -252,7 +252,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           1. curl -X DELETE http://localhost:9000/deleteSensorType/testSensorTypeName
       - **Result**: HTTP 201 if the sensor type metadata has been successfully deleted from the database
 
-14. <a name="17"></a>**DELETE ESTIMATION**
+14. <a name="14"></a>**DELETE ESTIMATION**
     - **Purpose**: Delete a sensor from sensor data service platform.
     - **Method**: DELETE
     - **URL**: http://einstein.sv.cmu.edu:9000/deleteSensor/<"sensorName">
@@ -264,7 +264,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 201 if the sensor metadata has been successfully deleted from the database
       
 
-15. <a name="41"></a>**ADD USER**
+15. <a name="15"></a>**ADD USER**
     - **Purpose**: Add a new user to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addUser
@@ -278,7 +278,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9000/addUser"
       - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used
 
-16. <a name="42"></a>**GET A USER INFORMATION**
+16. <a name="16"></a>**GET A USER INFORMATION**
     - **Purpose**: Query a specific user.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getUser/<"userName">/<"resultFormat">
@@ -292,7 +292,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json result**: {"userName":John,"userProfile":"CMU student"}
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-17. <a name="43"></a>**ADD ESTIMATION AS A REGISTERD USER**
+17. <a name="17"></a>**ADD ESTIMATION AS A REGISTERD USER**
     - **Purpose**: Add a new sensor as a registered user to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensor
@@ -309,7 +309,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensor.json "http://einstein.sv.cmu.edu:9000/addSensor"
       - **Result**: HTTP 201 if the sensor metadata have been successfully added to the database, HTTP 400 if failed.
 
-18. <a name="44"></a>**GET ALL ESTIMATIONS AS A REGISTERED USER**
+18. <a name="18"></a>**GET ALL ESTIMATIONS AS A REGISTERED USER**
     - **Purpose**: Query all sensors which has been added by a registered user.
     - **Method**: GET(Specify user name in request header)
     - **URL**: http://einstein.sv.cmu.edu:9000/getAllSensors/<"resultFormat">
@@ -323,7 +323,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
 
-19. <a name="45"></a>**GET A SPECIFIC ESTIMATION AS A REGISTERED USER**
+19. <a name="19"></a>**GET A SPECIFIC ESTIMATION AS A REGISTERED USER**
     - **Purpose**: Query a specific sensor which has been added by a registered user.
     - **Method**: GET (Specify user name in request header)
     - **URL**: http://einstein.sv.cmu.edu:9000/getSensor/<"sensorName">/<"resultFormat">
@@ -338,7 +338,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
 
-20. <a name="51"></a>**ADD A CONTEST USER**
+20. <a name="20"></a>**ADD A CONTEST USER**
     - **Purpose**: Add a new contest user.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addContestUser
@@ -359,7 +359,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9000/addContestUser"
       - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used or register limit has been reached.
       
-21. <a name="52"></a>**UPDATE A CONTEST USER**
+21. <a name="21"></a>**UPDATE A CONTEST USER**
     - **Purpose**: Update a new contest user.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateontestUser
@@ -380,7 +380,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9000/updateContestUser"
       - **Result**: HTTP 201 if the user has been successfully updated, HTTP 400 if the userName/password is wrong
       
-22. <a name="53"></a>**DELETE A CONTEST USER**
+22. <a name="22"></a>**DELETE A CONTEST USER**
     - **Purpose**: Delete a contest user.
     - **Method**: DELETE
     - **URL**: http://einstein.sv.cmu.edu:9000/deleteContestUser/<"userName">/<"password">
@@ -392,7 +392,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           1. curl -X DELETE http://localhost:9000/deleteContestUser/John/123
       - **Result**: HTTP 201 if the contest user has been successfully deleted
 
-23. <a name="54"></a>**GET ALL REGISTERED CONTEST USERS**
+23. <a name="23"></a>**GET ALL REGISTERED CONTEST USERS**
     - **Purpose**: Query all registered contest users.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getAllContestUsers/<"resultFormat">
@@ -403,7 +403,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json request**: http://einstein.sv.cmu.edu:9000/getAllContestUsers/json
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-24. <a name="55"></a>**GET SPECIFIC REGISTERED CONTEST USER**
+24. <a name="24"></a>**GET SPECIFIC REGISTERED CONTEST USER**
     - **Purpose**: Query specific registered contest user.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getContestUser/<"userName">/<"password">/<"resultFormat">
