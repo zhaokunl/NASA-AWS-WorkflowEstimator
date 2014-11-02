@@ -1,82 +1,36 @@
-2014-10-18 21:23:36,440 - [INFO] - from application in main 
-ReactiveMongoPlugin starting...
-
-2014-10-18 21:23:36,490 - [INFO] - from application in main 
-ReactiveMongoPlugin successfully started with db 'modern-web-template'! Servers:
-		[localhost:27017]
-
-2014-10-18 21:23:36,499 - [INFO] - from play in main 
-Application started (Prod)
-
-2014-10-18 21:23:36,627 - [INFO] - from play in main 
+2014-10-18 18:35:37,077 - [INFO] - from play in pool-4-thread-2 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2014-10-18 21:25:05,672 - [ERROR] - from reactivemongo.api.Failover in play-akka.actor.default-dispatcher-4 
-Got an error, no more attempts to do. Completing with a failure...
-reactivemongo.core.actors.Exceptions$PrimaryUnavailableException$: MongoError['No primary node is available!']
-	at reactivemongo.core.actors.Exceptions$PrimaryUnavailableException$.<clinit>(actors.scala) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at reactivemongo.core.actors.MongoDBSystem$$anonfun$pickChannel$4.apply(actors.scala:508) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at reactivemongo.core.actors.MongoDBSystem$$anonfun$pickChannel$4.apply(actors.scala:508) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at scala.Option.getOrElse(Option.scala:120) ~[scala-library.jar:na]
-	at reactivemongo.core.actors.MongoDBSystem.pickChannel(actors.scala:508) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at reactivemongo.core.actors.MongoDBSystem$$anonfun$receive$1.applyOrElse(actors.scala:252) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:498) ~[akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.actor.ActorCell.invoke(ActorCell.scala:456) ~[akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:237) ~[akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.Mailbox.run(Mailbox.scala:219) ~[akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386) [akka-actor_2.10-2.2.1.jar:2.2.1]
-	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library.jar:na]
-	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library.jar:na]
-	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library.jar:na]
-	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library.jar:na]
+2014-10-18 18:37:12,396 - [INFO] - from play in play-internal-execution-context-1 
+datasource [jdbc:h2:file:data/db;DB_CLOSE_DELAY=-1] bound to JNDI as DefaultDS
 
-2014-10-18 21:25:05,681 - [ERROR] - from application in play-akka.actor.default-dispatcher-4 
+2014-10-18 18:37:12,874 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:h2:file:data/db
 
+2014-10-18 18:37:14,424 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
 
-! @6k07086fh - Internal server error, for (GET) [/users] ->
+2014-10-18 21:35:47,682 - [INFO] - from play in main 
+datasource [jdbc:h2:file:data/db;DB_CLOSE_DELAY=-1] bound to JNDI as DefaultDS
 
-play.api.Application$$anon$1: Execution exception[[PrimaryUnavailableException$: MongoError['No primary node is available!']]]
-	at play.api.Application$class.handleError(Application.scala:293) ~[play_2.10-2.2.1.jar:2.2.1]
-	at play.api.DefaultApplication.handleError(Application.scala:399) [play_2.10-2.2.1.jar:2.2.1]
-	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$12$$anonfun$apply$1.applyOrElse(PlayDefaultUpstreamHandler.scala:165) [play_2.10-2.2.1.jar:2.2.1]
-	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$12$$anonfun$apply$1.applyOrElse(PlayDefaultUpstreamHandler.scala:162) [play_2.10-2.2.1.jar:2.2.1]
-	at scala.runtime.AbstractPartialFunction.apply(AbstractPartialFunction.scala:33) [scala-library.jar:na]
-	at scala.util.Failure$$anonfun$recover$1.apply(Try.scala:185) [scala-library.jar:na]
-	at scala.util.Try$.apply(Try.scala:161) [scala-library.jar:na]
-	at scala.util.Failure.recover(Try.scala:185) [scala-library.jar:na]
-	at scala.concurrent.Future$$anonfun$recover$1.apply(Future.scala:387) [scala-library.jar:na]
-	at scala.concurrent.Future$$anonfun$recover$1.apply(Future.scala:387) [scala-library.jar:na]
-	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:29) [scala-library.jar:na]
-	at play.api.libs.iteratee.Execution$$anon$1.execute(Execution.scala:43) [play-iteratees_2.10-2.2.1.jar:2.2.1]
-	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:37) [scala-library.jar:na]
-	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:133) [scala-library.jar:na]
-	at scala.concurrent.Promise$class.complete(Promise.scala:55) [scala-library.jar:na]
-	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:58) [scala-library.jar:na]
-	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:254) [scala-library.jar:na]
-	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:249) [scala-library.jar:na]
-	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:29) [scala-library.jar:na]
-	at akka.dispatch.BatchingExecutor$Batch$$anonfun$run$1.processBatch$1(BatchingExecutor.scala:67) [akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.BatchingExecutor$Batch$$anonfun$run$1.apply$mcV$sp(BatchingExecutor.scala:82) [akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.BatchingExecutor$Batch$$anonfun$run$1.apply(BatchingExecutor.scala:59) [akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.BatchingExecutor$Batch$$anonfun$run$1.apply(BatchingExecutor.scala:59) [akka-actor_2.10-2.2.1.jar:2.2.1]
-	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:72) [scala-library.jar:na]
-	at akka.dispatch.BatchingExecutor$Batch.run(BatchingExecutor.scala:58) [akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42) [akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386) [akka-actor_2.10-2.2.1.jar:2.2.1]
-	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library.jar:na]
-	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library.jar:na]
-	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library.jar:na]
-	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library.jar:na]
-Caused by: reactivemongo.core.actors.Exceptions$PrimaryUnavailableException$: MongoError['No primary node is available!']
-	at reactivemongo.core.actors.Exceptions$PrimaryUnavailableException$.<clinit>(actors.scala) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at reactivemongo.core.actors.MongoDBSystem$$anonfun$pickChannel$4.apply(actors.scala:508) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at reactivemongo.core.actors.MongoDBSystem$$anonfun$pickChannel$4.apply(actors.scala:508) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at scala.Option.getOrElse(Option.scala:120) ~[scala-library.jar:na]
-	at reactivemongo.core.actors.MongoDBSystem.pickChannel(actors.scala:508) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at reactivemongo.core.actors.MongoDBSystem$$anonfun$receive$1.applyOrElse(actors.scala:252) ~[reactivemongo_2.10-0.10.0.jar:0.10.0]
-	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:498) ~[akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.actor.ActorCell.invoke(ActorCell.scala:456) ~[akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:237) ~[akka-actor_2.10-2.2.1.jar:2.2.1]
-	at akka.dispatch.Mailbox.run(Mailbox.scala:219) ~[akka-actor_2.10-2.2.1.jar:2.2.1]
-	... 5 common frames omitted
+2014-10-18 21:35:48,003 - [INFO] - from play in main 
+database [default] connected at jdbc:h2:file:data/db
+
+2014-10-18 21:35:49,013 - [INFO] - from play in main 
+Application started (Prod)
+
+2014-10-18 21:35:49,108 - [INFO] - from play in main 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+2014-10-30 20:35:37,134 - [INFO] - from play in main 
+datasource [jdbc:h2:file:data/db;DB_CLOSE_DELAY=-1] bound to JNDI as DefaultDS
+
+2014-10-30 20:35:39,683 - [INFO] - from play in main 
+database [default] connected at jdbc:h2:file:data/db
+
+2014-10-30 20:35:41,440 - [INFO] - from play in main 
+Application started (Prod)
+
+2014-10-30 20:35:41,614 - [INFO] - from play in main 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 

@@ -8,74 +8,98 @@ import play.api.templates._
 import play.api.templates.PlayMagic._
 import models._
 import controllers._
+import java.lang._
+import java.util._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import play.api.i18n._
-import play.api.mvc._
-import play.api.data._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.data._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
 object index extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template0[play.api.templates.HtmlFormat.Appendable] {
 
     /**/
     def apply():play.api.templates.HtmlFormat.Appendable = {
-        _display_ {
+        _display_ {import helper._ 
 
-Seq[Any](format.raw/*1.1*/("""<!doctype html>
-<html lang="en" ng-app="myApp">
-<head>
-    <meta charset="utf-8">
-    <title>Modern Web Template</title>
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" media='screen' href='"""),_display_(Seq[Any](/*9.50*/routes/*9.56*/.Assets.at("stylesheets/main.css"))),format.raw/*9.90*/("""'>
-</head>
-<body>
-<div class="container-fluid col-md-10 col-md-offset-1">
-    <!-- Fixed navbar -->
-    <header>
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#/">Modern Web Template</a>
-            </div>
-        </div>
-    </header>
 
-    <div ng-view></div>
+Seq[Any](format.raw/*3.1*/("""
+"""),_display_(Seq[Any](/*4.2*/main("Carnegie Mellon University Sensor Data Storage")/*4.56*/{_display_(Seq[Any](format.raw/*4.57*/("""
 
-    <div>
-        <footer>
-            <hr/>
-            <div>
-                <span>&copy; YourProjectName.com 2014</span>
-                <span class="pull-right">version : <span app-version></span></span>
-            </div>
-        </footer>
-    </div>
-</div>
-</body>
+	<div class="jumbotron">
+		<div class="row">
+			<div class="col-lg-6">
 
-<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js' type="text/javascript"></script>
-<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js' type="text/javascript"></script>
-<script src='"""),_display_(Seq[Any](/*44.15*/routes/*44.21*/.Assets.at("javascripts/vendor/ui-bootstrap-tpls-0.10.0.js"))),format.raw/*44.81*/("""' type="text/javascript"></script>
+				<img src='"""),_display_(Seq[Any](/*10.16*/routes/*10.22*/.Assets.at("images/fireimp_small.jpg"))),format.raw/*10.60*/("""' style="padding-bottom: 0;">
 
-<script src='"""),_display_(Seq[Any](/*46.15*/routes/*46.21*/.Assets.at("javascripts/main.js"))),format.raw/*46.54*/("""' type="text/javascript"></script>
+			</div>
+			<div class="col-lg-6">
+				<h1>Internet of Things Data Service Platform</h1>
+				<p>A federated cloud platform for mobile data-centric service
+					development and sharing.</p>
+				<p>
+					<a class="btn btn-lg btn-default"
+						href="https://drive.google.com/file/d/0B9nWqnYxEA3HSEo3Zkx2QWJEVlE/edit?usp=sharing">Getting Started &raquo;</a>
+				</p>
+			</div>
+		</div>
+	</div>
 
-<!-- Coffee script compilled resources-->
-<script src='"""),_display_(Seq[Any](/*49.15*/routes/*49.21*/.Assets.at("javascripts/app.js"))),format.raw/*49.53*/("""' type="text/javascript"></script>
-<script src='"""),_display_(Seq[Any](/*50.15*/routes/*50.21*/.Assets.at("javascripts/common/Config.js"))),format.raw/*50.63*/("""' type="text/javascript"></script>
-<script src='"""),_display_(Seq[Any](/*51.15*/routes/*51.21*/.Assets.at("javascripts/directives/AppVersion.js"))),format.raw/*51.71*/("""' type="text/javascript"></script>
-
-<script src='"""),_display_(Seq[Any](/*53.15*/routes/*53.21*/.Assets.at("javascripts/users/UserService.js"))),format.raw/*53.67*/("""' type="text/javascript"></script>
-<script src='"""),_display_(Seq[Any](/*54.15*/routes/*54.21*/.Assets.at("javascripts/users/UserCtrl.js"))),format.raw/*54.64*/("""' type="text/javascript"></script>
-<script src='"""),_display_(Seq[Any](/*55.15*/routes/*55.21*/.Assets.at("javascripts/users/CreateUserCtrl.js"))),format.raw/*55.70*/("""' type="text/javascript"></script>
-
-</html>"""))}
+	<!-- Content -->
+	<div class="row">
+		<div class="col-lg-4">
+			<h2>Tutorial</h2>
+			<p>
+			Here is a simple guide on <a 
+				href="https://drive.google.com/file/d/0B0uwbnoOCGhEWGVuZjMtcDljcFE/edit?usp=sharing"
+				>how to use the platform</a>.
+			</p>
+		</div>
+		<div class="col-lg-4">
+			<h2>Visualization</h2>
+			<p>
+				A <a href="http://sensorserviceplatform.github.io/Visualization/">visualization</a> of the sensor network.
+			</p>
+		</div>
+		<div class="col-lg-4">
+			<h2>Virtual Sensor</h2>
+			<p>
+				A <a href="http://sensorserviceplatform.github.io/VirtualSensorEditor/">virtual sensor</a> tour.
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4">
+			<h2>Open Source</h2>
+			<p>
+				All the code is currently hosted on Github. Feel free to contribute
+				to this <a href="https://github.com/cmusv-sc">community</a>.
+			</p>
+		</div>
+		<div class="col-lg-4">
+			<h2>To Dos</h2>
+			<p>
+				Check the open <a
+					href="https://github.com/cmusv-sc/ArchF2013-Project3-FT/issues?page=1&state=open">issues</a>
+				on Github.
+			</p>
+		</div>
+		<div class="col-lg-4">
+			<h2>More information</h2>
+			<p>
+				For more information about this project, and a good general
+				overview, see the <a
+					href="https://docs.google.com/open?id=0B6VEjpK6RPgVN2Q1aDhRRjJid0U">slide
+					deck</a> covering relevant features.
+			</p>
+		</div>
+	</div>
+""")))})),format.raw/*74.2*/("""
+"""))}
     }
     
     def render(): play.api.templates.HtmlFormat.Appendable = apply()
@@ -87,11 +111,11 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 }
                 /*
                     -- GENERATED --
-                    DATE: Sat Oct 18 21:23:12 EDT 2014
-                    SOURCE: /Users/zhaokunli/modern-web-template/app/views/index.scala.html
-                    HASH: b08be2bd101f2ae87158ee87140f4acb56c0c2fd
-                    MATRIX: 637->0|1102->430|1116->436|1171->470|2454->1717|2469->1723|2551->1783|2637->1833|2652->1839|2707->1872|2835->1964|2850->1970|2904->2002|2989->2051|3004->2057|3068->2099|3153->2148|3168->2154|3240->2204|3326->2254|3341->2260|3409->2306|3494->2355|3509->2361|3574->2404|3659->2453|3674->2459|3745->2508
-                    LINES: 22->1|30->9|30->9|30->9|65->44|65->44|65->44|67->46|67->46|67->46|70->49|70->49|70->49|71->50|71->50|71->50|72->51|72->51|72->51|74->53|74->53|74->53|75->54|75->54|75->54|76->55|76->55|76->55
+                    DATE: Sat Oct 18 18:36:21 EDT 2014
+                    SOURCE: /Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/app/views/index.scala.html
+                    HASH: 874a2a17ddcc601b66fcfafa305781e4f1d4f421
+                    MATRIX: 872->19|908->21|970->75|1008->76|1133->165|1148->171|1208->209|3026->1996
+                    LINES: 30->3|31->4|31->4|31->4|37->10|37->10|37->10|101->74
                     -- GENERATED --
                 */
             
