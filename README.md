@@ -72,7 +72,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
     
 2. <a name="2"></a>**Log in with authentication**
-    - **Purpose**: Log into the website with. 
+    - **Purpose**: Log into the website with authentication. 
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/estimator/login
     - **Semantics**:
@@ -94,7 +94,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
 3. <a name="3"></a>**Account Summary**
-    - **Purpose**: Add a new sensor category to sensor data service platform.
+    - **Purpose**: Provide a summary of the account.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensorCategory
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
@@ -110,7 +110,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
 
 
 4. <a name="4"></a>**Log out**
-    - **Purpose**: Add a new sensor type to sensor data service platform.
+    - **Purpose**: Log out from the website.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensorType
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
@@ -131,7 +131,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 201 if the sensor type metadata has been successfully added to the database, HTTP 400 if failed.
 
 5. <a name="5"></a>**Tutorial**
-    - **Purpose**: Add a new sensor to sensor data service platform.
+    - **Purpose**: Provide a turorial about this website.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensor
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
@@ -147,7 +147,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 201 if the sensor metadata have been successfully added to the database, HTTP 400 if failed.
 
 6. <a name="6"></a>**Estimator**
-    - **Purpose**: Edit a sensor type to sensor data service platform.
+    - **Purpose**: Estimate for the workflow.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateSensorType
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
