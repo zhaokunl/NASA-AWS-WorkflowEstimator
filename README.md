@@ -40,9 +40,9 @@ Currently we are providing APIs in 3 categores:
 
 **Category 1: Recommadation**<br/>
    - [Log in](#1)
-   - [Log out](#2)
+   - [Log in with authentication](#2)
    - [Account Summary](#3)
-   - [Log in with authentication](#4)
+   - [Log out](#4)
    - [Tutorial](#5)
    - [Estimator1](#6)
    - [Estimator2](#7)
@@ -60,62 +60,19 @@ Detailed Usages:
 ----------------
 Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion from readable timestamp format to Unix epoch timestamp can be found in http://www.epochconverter.com
 
-1. <a name="1"></a>**PUBLISH SENSOR READINGS**
-    - **Purpose**: Publish sensor readings to sensor data service platform.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addSensorReading
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **sensorName** (string, **not null**): Existing sensor name.
-        - **timestamp** (int, **not null**): Recording timestamp of the sensor reading in Unix epoch timestamp format. 
-        - **value** (string, **not null**): The value of the sensor reading. It is user's responsibility to calibrate the sensor readings before publishing.
-        - **isIndoor** (boolean, optional): Sent from indoor or not.
-        - **longitude** (double, optional): Longitude of the sensor reading.
-        - **latitude** (double, optional): Longitude of the sensor reading.
-        - **altitude** (double, optional): Longitude of the sensor reading.
-        - **locationInterpreter** (string, optional): Interpreter information of location.
+1. <a name="1"></a>**Log in**
+    - **Purpose**: Log into the website with username and password.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9000/estimator/login
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. Prepare input sensor reading data in a JSON array (**please modify the timestamp to a different value**):
-              - "sampleReading.json" file contains: [{"sensorName": "testSensor1", "timestamp": 1368568896000, "value": "16", "isIndoor":true, "longitude":10, "latitude":10, "altitude": 10, "locationInterpreter":"GPS"}, {"sensorName": "testSensor2", "timestamp": 1368568896000, "value": "17", "isIndoor":true, "longitude":10, "latitude":10, "altitude": 10, "locationInterpreter":"GPS"}]
-          2. curl -H "Content-Type: application/json" -d @sampleReading.json "http://einstein.sv.cmu.edu:9000/addSensorReading"
-      - **Result**: HTTP 201 if the sensor readings have been successfully posted, HTTP 400 if failed.
+            curl http://einstein.sv.cmu.edu:9000/estimator/login
+      - **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
     
-
-4. <a name="4"></a>**GET ESTIMATION READING FROM A ESTIMATION(SPECIFIED BY SENSOR NAME) AT A TIMESTAMP**
-    - **Purpose**: Query sensor reading for a specific sensor at a specific time point.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getSensorReading/<"sensorName">/<"timestamp">/<"resultFormat">
-    - **Semantics**: 
-        - **sensorName**: Existing sensor name.
-        - **timestamp**: Time of the readings to query.
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getSensorReading/androidAccelerometer/1395247329000/csv<br/>
-      - **Sample csv result**: (sensorName,timestamp,value) </br>sensor1,1368568896000,518.0
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getSensorReading/androidAccelerometer/1395247329000/json
-      - **Sample json result**: {"timestamp":1368568896000,"sensorName":"sensor1","value":518}
-      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
-
-21. <a name="21"></a>**GET ESTIMATION READING FROM A ESTIMATION(SPECIFIED BY DEVICE URI AND SENSOR TYPE NAME) AT A TIMESTAMP**
-    - **Purpose**: Query sensor reading for a specific sensor at a specific time point.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getSensorReading/<"deviceUri">/<"sensorTypeName">/<"timestamp">/<"resultFormat">
-    - **Semantics**: 
-        - **deviceUri**: Existing device uri.
-        - **sensorTypeName**: Existing sensor type name.
-        - **timestamp**: Time of the readings to query.
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getSensorReading/23420ca4e4830bee/fireImpXAccelerometer/1395247329000/csv<br/>
-      - **Sample csv result**: (sensorName,timestamp,value) </br>sensor1,1368568896000,518.0
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getSensorReading/23420ca4e4830bee/fireImpXAccelerometer/1395247329000/json<br/>
-      - **Sample json result**: {"timestamp":1368568896000,"sensorName":"sensor1","value":518}
-      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
-      
-5. <a name="5"></a>**GET ESTIMATION READING FROM A ESTIMATION(SPECIFIED BY SENSOR NAME) AMONG A TIMESTAMP RANGE**
-    - **Purpose**: Query sensor readings for a specific sensor among a specific time range. 
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getSensorReadingInRange/<"sensorName">/<"startTime">/<"endTime">/<"resultFormat">
+2. <a name="5"></a>**Log in with authentication**
+    - **Purpose**: Log into the website with. 
+    - **Method**: POST
+    - **URL**: http://einstein.sv.cmu.edu:9000/estimator/login
     - **Semantics**:
         - **sensorName**: Existing sensor name.
         - **startTime**: Start time of the readings to query.
@@ -134,49 +91,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           {"timestamp":1368568896000,"value": 520,"sensorName":"sensor1"}]
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-25. <a name="25"></a>**GET ESTIMATION READING FROM A ESTIMATION(SPECIFIED BY DEVICE URI AND ESTIMATION TYPE NAME) BETWEEN A TIMESTAMP RANGE**
-    - **Purpose**: Query sensor readings for a specific sensor among a specific time range. 
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getSensorReadingInRange/<"deviceUri">/<"sensorTypeName">/<"startTime">/<"endTime">/<"resultFormat">
-    - **Semantics**:
-        - **deviceUri**: Existing device uri.
-        - **sensorTypeName**: Existing sensor type name.
-        - **startTime**: Start time of the readings to query.
-        - **endTime**: End time of the readings to query.
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getSensorReadingInRange/23420ca4e4830bee/fireImpXAccelerometer/1394557419000/1394643819000/csv
-      - **Sample csv result**: (sensorName,timestamp,value)<br/>
-          sensor1,1368568993000,517.0 <br/>
-          ... <br/>
-          sensor1,1368568896000,518.0
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getSensorReadingInRange/23420ca4e4830bee/fireImpXAccelerometer/1394557419000/1394643819000/json
-      - **Sample json result**: <br/>
-          [{"timestamp":1368568993000,"value":517,"sensorName":"sensor1"},
-          ... <br/>
-          {"timestamp":1368568896000,"value": 520,"sensorName":"sensor1"}]
-      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
-26. <a name="26"></a>**GET LAST MINUTE'S ESTIMATION READINGS FOR A SPECIFIC ESTIMATION**
-    - **Purpose**: Query the last minute of sensor readings based on sensor name.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getLastMinuteSensorReadings/<"sensorName">/<"resultFormat">
-    - **Semantics**:
-        - **sensorName**: Existing sensor name
-        - **resultFormat**: Either JSON or CSV
-    - **Sample Usages**: 
-      - TODO
-
-27. <a name="27"></a>**GET LATEST ESTIMATION READING FOR A SPECIFIC ESTIMATION**
-    - **Purpose**: Query the lastest sensor reading for a specific sensor.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getLatestSensorReading/<"sensorName">/<"resultFormat">
-    - **Semantics**:
-        - **sensorName**: Existing sensor name
-        - **resultFormat**: Either JSON or CSV
-    - **Sample Usages**: 
-      - TODO
-
-15. <a name="22"></a>**ADD ESTIMATION CATEGORY**
+3. <a name="22"></a>**Account Summary**
     - **Purpose**: Add a new sensor category to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensorCategory
@@ -192,7 +107,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 201 if the sensor category metadata has been successfully added to the database, HTTP 400 if the sensorCategoryName is already been used
 
 
-8. <a name="8"></a>**ADD ESTIMATION TYPE**
+4. <a name="8"></a>**Log out**
     - **Purpose**: Add a new sensor type to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensorType
@@ -213,7 +128,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensorType.json "http://einstein.sv.cmu.edu:9000/addSensorType"
       - **Result**: HTTP 201 if the sensor type metadata has been successfully added to the database, HTTP 400 if failed.
 
-9. <a name="9"></a>**ADD ESTIMATION**
+5. <a name="9"></a>**Tutorial**
     - **Purpose**: Add a new sensor to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensor
@@ -229,45 +144,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @sensor.json "http://einstein.sv.cmu.edu:9000/addSensor"
       - **Result**: HTTP 201 if the sensor metadata have been successfully added to the database, HTTP 400 if failed.
 
-10. <a name="10"></a>**ADD DEVICE TYPE**
-    - **Purpose**: Add a new device type to sensor data service platform.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addDeviceType
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **deviceTypeName** (string, not null): Non existing unique name of the device type.
-        - **manufacturer** (string, optional): Name of the manufacturer.
-        - **version** (string, optional): Version of the device type.
-        - **deviceTypeUserDefinedFields** (string): User defined fields. 
-        - **sensorTypeNames** (list of string, not null): Existing sensor type names contained in the device.
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          1. Prepare input device type metadata in a json file:
-              - "deviceType.json" file contains: {"deviceTypeName": "device 1", "manufacturer": "TI", "version": "1.0", "deviceTypeUserDefinedFields": "For test", "sensorTypeNames":["temp", "light"]}
-          2. curl -H "Content-Type: application/json" -d @deviceType.json "http://einstein.sv.cmu.edu:9000/addDeviceType"
-      - **Result**: HTTP 201 if the device type metadata has been successfully added to the database, HTTP 400 if failed.
-
-
-11. <a name="11"></a>**ADD DEVICE**
-    - **Purpose**: Add a new device to sensor data service platform.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addDevice
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **deviceTypeName** (string, not null): Existing name of its device type.
-        - **uri** (string): Unique uri of a device.
-        - **location**
-            - **representation** (string): Location interpreter.
-            - **latitude** (double): Latitude.
-            - **longitude** (double): Longitude.
-            - **altitude** (double): Altitude.
-        - **deviceUserDefinedFields** (string): User defined fields. 
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          1. Prepare input device metadata in a json file:
-              - "device.json" file contains: {"deviceTypeName": "fireimp", "uri": "www.device.com", "location" : {"representation": "test location description", "latitude": 10, "longitude": 10, "altitude": 10}, "deviceUserDefinedFields": "For test"}
-          2. curl -H "Content-Type: application/json" -d @device.json "http://einstein.sv.cmu.edu:9000/addDevice"
-      - **Result**: HTTP 201 if the device metadata have been successfully added to the database, HTTP 400 if failed.
-
-14. <a name="12"></a>**EDIT ESTIMATION TYPE**
+6. <a name="12"></a>**EDIT ESTIMATION TYPE**
     - **Purpose**: Edit a sensor type to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateSensorType
@@ -282,7 +159,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if the sensor type metadata has been successfully updated to the database
 
 
-16. <a name="23"></a>**EDIT ESTIMATION CATEGORY**
+6. <a name="23"></a>**Estimator1**
     - **Purpose**: Edit a sensor category to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/updateSensorCategory
@@ -401,80 +278,6 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample csv result**: (sensorName, sensorUserDefinedFields, deviceUri, sensorTypeName, manufacturer,version,maxValue,minValue,unit,interpreter,sensorTypeUserDefinedFields, sensorCategoryName) </br>sensor1, for test, www.device.com, Humidity, Motorola, 1.0, 100, 0, Percentage, MyInterpreter, Testing only, Environment
       - **Sample json request**: http://einstein.sv.cmu.edu:9000/getSensor/sensor1/json
       - **Sample json result**: {"sensorName": "sensor1", "sensorUserDefinedFields": "for test", "deviceUri":"www.device.com", "sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment"}
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-
-      
-37. <a name="37"></a>**GET ALL DEVICE TYPES**
-    - **Purpose**: Query all device types.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getAllDeviceTypes/<"resultFormat">
-    - **Semantics**: 
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getAllDeviceTypes/csv<br/>
-      - **Sample csv result**: (deviceTypeName,manufacturer,version,deviceTypeUserDefinedFields,sensorTypeNames) </br>device type 1, TI, 1.0, For Test, "[temp, light]"
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getAllDeviceTypes/json
-      - **Sample json result**: [{"deviceTypeName": "device type  1", "manufacturer": "TI", "version": "1.0", "deviceTypeUserDefinedFields": "For test", "sensorTypeNames":["temp", "light"]}]
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-
-      
-38. <a name="38"></a>**GET A SPECIFIC DEVICE TYPE**
-    - **Purpose**: Query a specific device type.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getDeviceType/<"deviceTypeName">/<"resultFormat">
-    - **Semantics**: 
-        - **deviceTypeName**: Device type name.
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**:  
-      - **Result**: HTTP 200 if the deviceTypeName exists, HTTP 404 if not found
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getDeviceType/device type 1/csv<br/>
-      - **Sample csv result**: (deviceTypeName,manufacturer,version,deviceTypeUserDefinedFields,sensorTypeNames) </br>device 1, TI, 1.0, For Test, "[temp, light]"
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getDeviceType/<"deviceTypeName">/json
-      - **Sample json result**: {"deviceTypeName": "device type  1", "manufacturer": "TI", "version": "1.0", "deviceTypeUserDefinedFields": "For test", "sensorTypeNames":["temp", "light"]}
-      
-
-
-39. <a name="39"></a>**GET ALL DEVICES**
-    - **Purpose**: Query all devices.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getAllDevices/<"resultFormat">
-    - **Semantics**: 
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getAllDevices/csv<br/>
-      - **Sample csv result**: (deviceUri, deviceUserDefinedFields, longitude, latitude, altitude, representation, deviceTypeName,manufacturer,version,deviceTypeUserDefinedFields,sensorTypeNames, sensorNames) </br>www.device.com, For test, 10, 10, 10, myInterpreter, device type 1, TI, 1.0, For Test, "[temp, light]", "[sensor1, sensor2]"
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getAllDevices/json
-      - **Sample json result**: [{"deviceUri":"www.device.com", "deviceUserDefinedFields": "For test", "longitude":10, "latitude": 10, "altitude":10, "representation": "myInterpreter", "deviceTypeName": "device type  1", "manufacturer": "TI", "version": "1.0", "deviceTypeUserDefinedFields": "For test", "sensorTypeNames":["temp", "light"], "sensorNames":["sensor1", "sensor2"]}]
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-30. <a name="30"></a>**GET DEVICES INSIDE A SPECIFIC GEO-FENCE**
-    - **Purpose**: Query devices by specifying the geo-fence.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getDevicesByGeofence/<"geo-fence">/<"resultFormat">
-    - **Semantics**: 
-        - **geo-fence**: The location representation of the device.
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getDevicesByGeofence/room129A/csv<br/>
-      - **Sample csv result**: (deviceUri, deviceUserDefinedFields, longitude, latitude, altitude, representation, deviceTypeName,manufacturer,version,deviceTypeUserDefinedFields,sensorTypeNames, sensorNames) </br>www.device.com, For test, 10, 10, 10, myInterpreter, device type 1, TI, 1.0, For Test, "[temp, light]", "[sensor1, sensor2]"
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getDevicesByGeofence/room129A/json
-      - **Sample json result**: [{"deviceUri":"www.device.com", "deviceUserDefinedFields": "For test", "longitude":10, "latitude": 10, "altitude":10, "representation": "myInterpreter", "deviceTypeName": "device type  1", "manufacturer": "TI", "version": "1.0", "deviceTypeUserDefinedFields": "For test", "sensorTypeNames":["temp", "light"], "sensorNames":["sensor1", "sensor2"]}]
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-
-40. <a name="40"></a>**GET A SPECIFIC DEVICE**
-    - **Purpose**: Query a specific device.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getDevice/<"deviceUri">/<"resultFormat">
-    - **Semantics**: 
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**:  
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getDevice/www.device.com/csv<br/>
-      - **Sample csv result**: (deviceUri, deviceUserDefinedFields, longitude, latitude, altitude, locationInterpreter, deviceTypeName,manufacturer,version,deviceTypeUserDefinedFields,sensorTypeNames, sensorNames) </br>www.device.com, For test, 10, 10, 10, myInterpreter, device type 1, TI, 1.0, For Test, "[temp, light]", "[sensor1, sensor2]"
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getDevice/www.device.com/json
-      - **Sample json result**: {"deviceUri":"www.device.com", "deviceUserDefinedFields": "For test", "longitude":10, "latitude": 10, "altitude":10, "locationInterpreter": "myInterpreter", "deviceTypeName": "device type  1", "manufacturer": "TI", "version": "1.0", "deviceTypeUserDefinedFields": "For test", "sensorTypeNames":["temp", "light"], "sensorNames":["sensor1", "sensor2"]}
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
 41. <a name="24"></a>**DELETE ESTIMATION CATEGORY**
