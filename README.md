@@ -36,7 +36,6 @@ Play server process ID is 26045
 ```
 Overview:
 ---------
-<<<<<<< HEAD
 Currently we are providing APIs in 2 categores:
 
 **Category 1: Recommadation**<br/>
@@ -58,67 +57,6 @@ Currently we are providing APIs in 2 categores:
    - [Update](#14)
    - [Delete form](#15)
    - [Admin page](#16)
-=======
-Currently we are providing APIs in 3 categores:
-
-**Category 1: Post sensor reading**<br/>
-   - [Post sensor reading data](#1)<br/>
-    
-**Category 2: Query database for sensor readings**<br/>
-   - [Get sensor reading from a sensor(specified by sensorName) at a timestamp](#4)<br/>
-   - [Get sensor reading from a sensor(specified by deviceUri and sensorTypeName) at a timestamp](#21)<br/>
-   - [Get sensor reading from a sensor(specified by sensorName) among a timestamp range](#5)<br/>
-   - [Get sensor reading from a sensor(specified by deviceUri and sensorTypeName) between a timestamp range](#25)<br/>
-   - [Get last minute's sensor readings for a specific sensor](#26)
-   - [Get last minute's sensor readings for a sensor type in all registered devices](#6)
-   - [Get latest sensor reading for a specific sensor](#27)
-   - [Get latest sensor readings for a sensor type in all registered devices](#7)
-   - [Get latest sensor readings from devices inside a specific geo-fence](#24)<br/>
-
-    
-**Category 3: Manage metadata**<br/>
-   - [Add a sensor category](#22)
-   - [Add a sensor type](#8)
-   - [Add a sensor](#9)
-   - [Add a device type](#10)
-   - [Add a device](#11)
-   - [Edit a sensor category](#23)
-   - [Edit a sensor type](#12)
-   - [Edit a sensor](#13)
-   - [Edit a device type](#14)
-   - [Edit a device](#15)
-   - [Delete a sensor category](#24)
-   - [Delete a sensor type](#16)
-   - [Delete a sensor](#17)
-   - [Delete a device type](#18)
-   - [Delete a device](#19)
-   - [Get all sensor categories](#31)
-   - [Get a specific sensor category](#32)
-   - [Get all sensor types](#33)
-   - [Get a specific sensor type](#34)
-   - [Get all sensors](#35)
-   - [Get all sensors (reduced)](#28)
-   - [Get a specific sensor](#36)
-   - [Get all device types](#37)
-   - [Get a specific device type](#38)
-   - [Get all devices](#39)
-   - [Get devices inside a specific geo-fence](#30)
-   - [Get a specific device](#40)
-
-**Category 4: Access Control**<br/>
-   - [Add a user](#41)
-   - [Get a user](#42)
-   - [Add a sensor as a user](#43)
-   - [Get all sensors which has been added by a user](#44)
-   - [Get a specific sensor which has been added by a user](#45)
-
-**Category 5: User management for contest**<br/>
-   - [Add a contest user](#51)
-   - [Update a contest user](#52)
-   - [Delete a contest user](#53)
-   - [Get all contest users](#54)
-   - [Get specific contest user](#55)
->>>>>>> 2723a85929ad63ecc2a88b96a78a2d9453717739
 
 Detailed Usages:
 ----------------
@@ -909,19 +847,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getAllContestUsers/csv<br/>
       - **Sample json request**: http://einstein.sv.cmu.edu:9000/getAllContestUsers/json
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-55. <a name="55"></a>**GET SPECIFIC REGISTERED CONTEST USER**
->>>>>>> 2723a85929ad63ecc2a88b96a78a2d9453717739
-    - **Purpose**: Query specific registered contest user.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getContestUser/<"userName">/<"password">/<"resultFormat">
-    - **Semantics**: 
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getContestUser/John/123/csv<br/>
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getContestUser/John/123/json
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
+      - 
 [1]: http://einstein.sv.cmu.edu:9000/ "The Application Server running in the Smart Spaces Lab, CMUSV"
 
 ## Support
