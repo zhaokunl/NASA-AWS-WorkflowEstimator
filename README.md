@@ -381,18 +381,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           1. curl -X DELETE http://localhost:9000/deleteContestUser/John/123
       - **Result**: HTTP 201 if the contest user has been successfully deleted
-
-24. <a name="24"></a>**GET SPECIFIC REGISTERED CONTEST USER**
-    - **Purpose**: Query specific registered contest user.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getContestUser/<"userName">/<"password">/<"resultFormat">
-    - **Semantics**: 
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getContestUser/John/123/csv<br/>
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getContestUser/John/123/json
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
+      
 [1]: http://einstein.sv.cmu.edu:9000/ "The Application Server running in the Smart Spaces Lab, CMUSV"
 
 ## Support
