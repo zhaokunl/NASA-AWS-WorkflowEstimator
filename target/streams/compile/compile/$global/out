@@ -1,4 +1,4 @@
-[0m[[0mdebug[0m] [0mInvalidating /home/derek/NASA-AWS-WorkflowEstimator/target/scala-2.10/classes/controllers/Application.class: stamp changed from lastModified(1415306200000) to lastModified(1415306619000)[0m
+[0m[[0mdebug[0m] [0mInvalidating /home/derek/NASA-AWS-WorkflowEstimator/target/scala-2.10/classes/controllers/Application.class: stamp changed from lastModified(1415307483000) to lastModified(1415307486000)[0m
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mInitial source changes: [0m
 [0m[[0mdebug[0m] [0m	removed:Set()[0m
@@ -11,18 +11,18 @@
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
 [0m[[0mdebug[0m] [0m	product: Set()[0m
-[0m[[0mdebug[0m] [0m	binary dep: Set(/home/derek/NASA-AWS-WorkflowEstimator/app/controllers/BugReportController.java, /home/derek/NASA-AWS-WorkflowEstimator/app/controllers/NasaRegistrationController.java, /home/derek/NASA-AWS-WorkflowEstimator/app/controllers/Application.java)[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set(/home/derek/NASA-AWS-WorkflowEstimator/app/controllers/Application.java, /home/derek/NASA-AWS-WorkflowEstimator/app/controllers/BugReportController.java, /home/derek/NASA-AWS-WorkflowEstimator/app/controllers/NasaRegistrationController.java)[0m
 [0m[[0mdebug[0m] [0m	external source: Set()[0m
 [0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/derek/NASA-AWS-WorkflowEstimator/app/controllers/Application.java, /home/derek/NASA-AWS-WorkflowEstimator/app/controllers/NasaRegistrationController.java, /home/derek/NASA-AWS-WorkflowEstimator/app/controllers/BugReportController.java)[0m
 [0m[[0minfo[0m] [0mCompiling 3 Java sources to /home/derek/NASA-AWS-WorkflowEstimator/target/scala-2.10/classes...[0m
 [0m[[0mdebug[0m] [0mAttempting to call javac directly...[0m
 [0m[[0mdebug[0m] [0mcom.sun.tools.javac.Main not found with appropriate method signature; forking javac instead[0m
-[0m[[0mdebug[0m] [0mForking javac: javac @/tmp/sbt_9f9e47c7/argfile[0m
+[0m[[0mdebug[0m] [0mForking javac: javac @/tmp/sbt_7e4a5d44/argfile[0m
 [0m[[33mwarn[0m] [0m注: /home/derek/NASA-AWS-WorkflowEstimator/app/controllers/BugReportController.java使用了未经检查或不安全的操作。[0m
 [0m[[33mwarn[0m] [0m注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。[0m
 [0m[[0mdebug[0m] [0mjavac returned exit code: 0[0m
-[0m[[0mdebug[0m] [0mJava compilation took 0.838102904 s[0m
-[0m[[0mdebug[0m] [0mJava analysis took 0.086064586 s[0m
+[0m[[0mdebug[0m] [0mJava compilation took 0.866035389 s[0m
+[0m[[0mdebug[0m] [0mJava analysis took 0.102356838 s[0m
 [0m[[0mdebug[0m] [0mInvalidated by transitive public inheritance: Set()[0m
 [0m[[0mdebug[0m] [0mInvalidated by direct dependency: Set()[0m
 [0m[[0mdebug[0m] [0mNew invalidations:[0m
