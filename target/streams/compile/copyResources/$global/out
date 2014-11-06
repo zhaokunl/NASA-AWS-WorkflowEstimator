@@ -1,5 +1,5 @@
 [0m[[0mdebug[0m] [0mCopy resource mappings: [0m
-[0m[[0mdebug[0m] [0m	(/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/conf/application.conf,/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/target/scala-2.10/classes/application.conf)[0m
-[0m[[0mdebug[0m] [0m	(/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/conf/META-INF,/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/target/scala-2.10/classes/META-INF)[0m
-[0m[[0mdebug[0m] [0m	(/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/conf/routes,/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/target/scala-2.10/classes/routes)[0m
-[0m[[0mdebug[0m] [0m	(/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/conf/META-INF/persistence.xml,/Users/zhaokunli/Downloads/ArchF2013-Project3-FT-master/target/scala-2.10/classes/META-INF/persistence.xml)[0m
+[0m[[0mdebug[0m] [0m	(/home/derek/NASA-AWS-WorkflowEstimator/conf/routes,/home/derek/NASA-AWS-WorkflowEstimator/target/scala-2.10/classes/routes)[0m
+[0m[[0mdebug[0m] [0m	(/home/derek/NASA-AWS-WorkflowEstimator/conf/META-INF,/home/derek/NASA-AWS-WorkflowEstimator/target/scala-2.10/classes/META-INF)[0m
+[0m[[0mdebug[0m] [0m	(/home/derek/NASA-AWS-WorkflowEstimator/conf/application.conf,/home/derek/NASA-AWS-WorkflowEstimator/target/scala-2.10/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/home/derek/NASA-AWS-WorkflowEstimator/conf/META-INF/persistence.xml,/home/derek/NASA-AWS-WorkflowEstimator/target/scala-2.10/classes/META-INF/persistence.xml)[0m

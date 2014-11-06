@@ -24,13 +24,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import play.mvc.*;
 import play.data.*;
 import static play.data.Form.*;
-import views.html.*;
+import views.html.estimator.*;
 
 public class Application extends Controller {
 	//final static Form<SensorType> sensorTypeForm = Form.form(SensorType.class);
 	
     public static Result index() {
-        return ok(views.html.estimator.estimate.render(null,null,null));
+        return ok(estimate.render(null,null,null));
     }
 
     // -- Authentication
@@ -51,7 +51,7 @@ public class Application extends Controller {
 
     /** Login page. */
     public static Result login() {
-        return ok( login.render(form(Login.class)) );
+        return ok(views.html.login.render(form(Login.class)) );
     }
     
     /**  Handle login form submission. */

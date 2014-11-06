@@ -25,6 +25,7 @@ import play.mvc.Result;
 import util.APICall;
 import util.APICall.ResponseType;
 import views.html.index;
+import views.html.sensors;
 import views.html.registration.*;
 import views.html.estimator.*;
 import util.*;
