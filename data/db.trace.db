@@ -412,3 +412,29 @@ Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the ap
 07-15 15:46:07 jdbc[21]: exception
 org.h2.jdbc.JdbcSQLException: Table "BUG_REPORT" already exists; SQL statement:
 CREATE TABLE BUG_REPORT (id INT auto_increment, title VARCHAR(255), name VARCHAR(255), email VARCHAR(255), organization VARCHAR(255), description VARCHAR(255), solved TINYINT) [42101-172]
+11-09 01:57:36 database: close
+org.h2.message.DbException: IO Exception: "java.io.IOException: No space left on device"; "/Users/zhaokunli/NASA-AWS-WorkflowEstimator/data/db.h2.db" [90031-172]
+	at org.h2.message.DbException.get(DbException.java:158)
+	at org.h2.message.DbException.convertIOException(DbException.java:315)
+	at org.h2.store.FileStore.setLength(FileStore.java:349)
+	at org.h2.store.PageStore.increaseFileSize(PageStore.java:1191)
+	at org.h2.store.PageStore.increaseFileSize(PageStore.java:1182)
+	at org.h2.store.PageStore.allocatePage(PageStore.java:1164)
+	at org.h2.store.PageStore.allocatePages(PageStore.java:1131)
+	at org.h2.store.PageOutputStream.reserve(PageOutputStream.java:75)
+	at org.h2.store.PageLog.openForWriting(PageLog.java:185)
+	at org.h2.store.PageStore.compact(PageStore.java:496)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1214)
+	at org.h2.engine.Database.close(Database.java:1164)
+	at org.h2.engine.DatabaseCloser.run(DatabaseCloser.java:64)
+Caused by: org.h2.jdbc.JdbcSQLException: IO Exception: "java.io.IOException: No space left on device"; "/Users/zhaokunli/NASA-AWS-WorkflowEstimator/data/db.h2.db" [90031-172]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	... 13 more
+Caused by: java.io.IOException: No space left on device
+	at java.io.RandomAccessFile.writeBytes0(Native Method)
+	at java.io.RandomAccessFile.writeBytes(RandomAccessFile.java:520)
+	at java.io.RandomAccessFile.write(RandomAccessFile.java:550)
+	at org.h2.store.fs.FileDisk.write(FilePathDisk.java:462)
+	at org.h2.store.fs.FileUtils.writeFully(FileUtils.java:356)
+	at org.h2.store.FileStore.setLength(FileStore.java:341)
+	... 10 more

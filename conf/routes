@@ -13,7 +13,7 @@ GET     /logout                             controllers.Application.logout()
 # BugReporting
 GET     /bugs                       controllers.BugReportController.reports()
 GET     /newReport					controllers.BugReportController.newReport()
-GET	/bug/list					controllers.BugReportController.list()
+GET	    /bug/list					controllers.BugReportController.list()
 POST	/delete/report				controllers.BugReportController.deleteReport()
 POST	/solve/report				controllers.BugReportController.solveReport()
 
@@ -21,21 +21,21 @@ POST	/solve/report				controllers.BugReportController.solveReport()
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # dashboard
-GET	/dashboard				controllers.DashboardController.dashboard()
-
+GET	    /dashboard				controllers.DashboardController.dashboard()
+ 
 # About Us
-GET	/aboutus				controllers.AboutusController.aboutus()
+GET	    /aboutus				controllers.AboutusController.aboutus()
 
 # recommendation
 GET		/estimator				controllers.EstimateController.estimate(email ?= null, vfile ?= null, dataset ?= null)
-POST	        /estimator/1			controllers.EstimateController.estimate1()
+POST	/estimator/1			controllers.EstimateController.estimate1()
 GET		/estimator/1			controllers.EstimateController.estimate1()			
 GET		/estimator/2			controllers.EstimateController.estimate2()
 GET		/estimator/3			controllers.EstimateController.estimate3()
 GET		/estimator/tutorial		controllers.EstimateController.tutorial()
 GET		/estimator/login		controllers.EstimateController.login()
-POST            /estimator/login        controllers.EstimateController.authenticate()
-GET             /estimator/logout       controllers.EstimateController.logout()
+POST    /estimator/login        controllers.EstimateController.authenticate()
+GET     /estimator/logout       controllers.EstimateController.logout()
 GET		/estimator/accountSummary		controllers.EstimateController.accountSummary(userName ?= null)
 
 #Registration

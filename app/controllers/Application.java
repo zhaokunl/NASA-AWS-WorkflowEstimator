@@ -30,7 +30,7 @@ public class Application extends Controller {
 	//final static Form<SensorType> sensorTypeForm = Form.form(SensorType.class);
 	
     public static Result index() {
-        return ok(views.html.estimator.estimate.render(null,null,null));
+        return ok(index.render());
     }
 
     // -- Authentication
