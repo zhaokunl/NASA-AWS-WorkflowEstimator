@@ -384,6 +384,6 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
 
 ## Support
 
-Zhaokun Li, Xia Liu, Dong Chen
+Please contact Zhaokun Li, Xia Liu, Dong Chen
 
 Professor Jia Zhang
