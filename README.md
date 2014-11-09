@@ -217,7 +217,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json result**: [{"sensorName": "sensor01", "sensorUserDefinedFields": "for test", "deviceUri": "www.device.com/001","sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment", "purpose": "test only"}]
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-11. <a name="11"></a>**GET A SPECIFIC ESTIMATION**
+11. <a name="11"></a>**Registration form**
     - **Purpose**: Query a specific sensor.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getSensor/<"sensorName">/<"resultFormat">
@@ -232,7 +232,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json result**: {"sensorName": "sensor1", "sensorUserDefinedFields": "for test", "deviceUri":"www.device.com", "sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment"}
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-12. <a name="12"></a>**DELETE ESTIMATION TYPE**
+12. <a name="12"></a>**Submit**
     - **Purpose**: Delete a sensor type from sensor data service platform.
     - **Method**: DELETE
     - **URL**: http://einstein.sv.cmu.edu:9000/deleteSensorType/<"sensorTypeName">
@@ -243,7 +243,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           1. curl -X DELETE http://localhost:9000/deleteSensorType/testSensorTypeName
       - **Result**: HTTP 201 if the sensor type metadata has been successfully deleted from the database
 
-14. <a name="14"></a>**DELETE ESTIMATION**
+14. <a name="14"></a>**Update form**
     - **Purpose**: Delete a sensor from sensor data service platform.
     - **Method**: DELETE
     - **URL**: http://einstein.sv.cmu.edu:9000/deleteSensor/<"sensorName">
@@ -254,7 +254,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           1. curl -X DELETE http://localhost:9000/deleteSensor/testSensorName
       - **Result**: HTTP 201 if the sensor metadata has been successfully deleted from the database
 
-15. <a name="15"></a>**ADD USER**
+15. <a name="15"></a>**Update**
     - **Purpose**: Add a new user to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addUser
@@ -268,7 +268,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9000/addUser"
       - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used
 
-16. <a name="16"></a>**GET A USER INFORMATION**
+16. <a name="16"></a>**Delete form**
     - **Purpose**: Query a specific user.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getUser/<"userName">/<"resultFormat">
@@ -282,7 +282,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Sample json result**: {"userName":John,"userProfile":"CMU student"}
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
-17. <a name="17"></a>**ADD ESTIMATION AS A REGISTERD USER**
+17. <a name="17"></a>**Update page**
     - **Purpose**: Add a new sensor as a registered user to sensor data service platform.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9000/addSensor
@@ -306,8 +306,6 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
     - **Semantics**: 
         - **resultFormat**: Either JSON or CSV.
     - **Sample Usages**: 
-      - **Sample csv request**: curl -H "Authorization:John" http://einstein.sv.cmu.edu:9000/getAllSensors/csv<br/>
-      - **Sample csv result**: (sensorName, sensorUserDefinedFields, deviceUri, sensorTypeName, manufacturer,version,maximumValue,minimumValue,unit,interpreter,sensorTypeUserDefinedFields, sensorCategoryName) </br>sensor01, for test, www.device.com/001, Humidity, Motorola, 1.0, 100, 0, Percentage, MyInterpreter, Testing only, Environment, test only
       - **Sample json request**: curl -H "Authorization:John" http://einstein.sv.cmu.edu:9000/getAllSensorTypes/json
       - **Sample json result**: [{"sensorName": "sensor01", "sensorUserDefinedFields": "for test", "deviceUri": "www.device.com/001","sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment", "purpose": "test only"}]
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
