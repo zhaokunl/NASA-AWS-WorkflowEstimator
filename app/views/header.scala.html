@@ -15,48 +15,38 @@
 			<div class="navbar-collapse collapse" style="height:">
 				<ul class="nav navbar-nav navbar-right">
 
-					<li><a href="@routes.Application.index()">Home</a></li>
 					
 					<li class="dropdown"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown">Meta Data <b
+						class="dropdown-toggle" data-toggle="dropdown">Account Management<b
 							class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="@routes.SensorCategoryController.sensorCategories()">1. Sensor
-									Categories</a></li>
-							<li><a href="@routes.SensorTypeController.sensorTypes()">2. Sensor
-									Types</a></li>
-							<li><a href="@routes.DeviceTypeController.deviceTypes()">3. Device Types</a></li>							
-							<li><a href="@routes.DeviceController.devices()">4. Devices</a></li>
-							<li><a href="@routes.SensorController.sensors()">5. Sensors</a></li>
-						</ul></li>
+							<li><a href="@routes.NasaRegistrationController.updateForm()">Update User Details</a></li>
+							<li><a href="@routes.NasaRegistrationController.deleteForm()">Delete User</a></li>
+							<li><a href="@routes.Application.accountSummary(session.get("username"))">Account Summary</a></li>
+						</ul>
+						</li>
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Sensor Data<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="@routes.SensorReadingController.sensorReadings()">Data Export</a></li>
-							
-						</ul></li>
+										<li><a>About Us</a></li>
+
+					
 						
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Console Management<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="@routes.DashboardController.dashboard()">Dashboard</a></li>
-							<li><a href="http://sensorserviceplatform.github.io/VirtualSensorEditor/">Virtual Sensor Editor</a></li>
-							<li><a href="http://sensorserviceplatform.github.io/Visualization/">Virtualization</a></li>							
-						</ul></li>					
-											
-					<li><a href="@routes.AboutusController.aboutus()">About Us</a></li>
-
-					@if(!session.get("email")){
+					@if(!session.get("username")){
 					
 						<form class="navbar-form navbar-right" action="@routes.Application.login()">
-							<button type="submit" class="btn btn-success">Sign in</button>
+							<button type="submit" class="btn btn-success">Log in</button>
 						</form>
 					}else{
+						<li><a href="/estimator/tutorial">Estimator</a></li>
 						<form class="navbar-form navbar-right" action="@routes.Application.logout()">
 							<button type="submit" class="btn btn-success">Log out</button>
 						</form>
-					}
+					}	
+					
+					@if(session.get("username") && session.get("username").equals("admin")){
+						<form class="navbar-form navbar-right" action="@routes.NasaRegistrationController.adminPage()">
+							<button type="submit" class="btn btn-success">Admin Console</button>
+						</form>
+					}						
 					
 				</ul>
 			</div>

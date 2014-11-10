@@ -58,3 +58,15 @@ Application started (Prod)
 2014-11-09 14:58:03,926 - [INFO] - from play in main 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
+2014-11-09 22:34:52,355 - [INFO] - from play in main 
+datasource [jdbc:h2:file:data/db;DB_CLOSE_DELAY=-1] bound to JNDI as DefaultDS
+
+2014-11-09 22:34:52,836 - [INFO] - from play in main 
+database [default] connected at jdbc:h2:file:data/db
+
+2014-11-09 22:34:54,215 - [INFO] - from play in main 
+Application started (Prod)
+
+2014-11-09 22:34:54,382 - [INFO] - from play in main 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+

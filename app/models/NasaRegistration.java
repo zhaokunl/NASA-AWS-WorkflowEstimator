@@ -187,8 +187,6 @@ public class NasaRegistration {
 	}
 
 	public static String getUserInfo(String userName, String password) {
-		// System.out.println("Reached in getUserInfo:" + userName);
-		// System.out.println("Reached in password:" + password);
 
 		List<NasaRegistration> allUsers = new ArrayList<NasaRegistration>();
 		String GET_IND_USER_DATA = "http://einstein.sv.cmu.edu:9000/getContestUser/";
@@ -218,26 +216,5 @@ public class NasaRegistration {
 			System.out.println("Does not come inside the if clause");
 			return null;
 		}
-
-		// parse the json string into object
-		/*
-		 * for (int i = 0; i < usersNode.size(); i++) { JsonNode json =
-		 * usersNode.path(i); NasaRegistration getUser = new NasaRegistration();
-		 * 
-		 * getUser.setUserNameField(json.findPath("userName").asText());
-		 * getUser.setPasswordField(json.findPath("password").asText());
-		 * getUser.setfNameField(json.findPath("firstName").asText());
-		 * 
-		 * if(getUser.getUserNameField().equals(userName) &&
-		 * getUser.getPasswordField().equals(password)){
-		 * System.out.println("inside check of username and password"); return
-		 * true; } else return false;
-		 * 
-		 * System.out.println("UserName:" + getUser.getfNameField());
-		 * 
-		 * allUsers.add(getUser); }
-		 */
-
 	}
-
 }

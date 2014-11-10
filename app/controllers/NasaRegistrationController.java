@@ -25,13 +25,11 @@ import play.mvc.Result;
 import util.APICall;
 import util.APICall.ResponseType;
 import views.html.index;
-import views.html.sensors;
 import views.html.registration.*;
 import views.html.estimator.*;
 import util.*;
 import util.EstimatorAPICalls;
 import models.metadata.NasaRMdata;
-import models.metadata.Sensor;
 
 import java.util.*;
 
@@ -81,10 +79,9 @@ public class NasaRegistrationController extends Controller {
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			Application.flashMsg(APICall.createResponse(ResponseType.UNKNOWN));
 		}
 
-		return redirect(routes.EstimateController.login());
+		return redirect(routes.Application.login());
 	}
 	
 	public static Result update() {
@@ -104,7 +101,6 @@ public class NasaRegistrationController extends Controller {
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			Application.flashMsg(APICall.createResponse(ResponseType.UNKNOWN));
 		}
 
 		return ok(tutorial.render());
@@ -134,7 +130,6 @@ public class NasaRegistrationController extends Controller {
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			Application.flashMsg(APICall.createResponse(ResponseType.UNKNOWN));
 		}
 
 		return redirect(routes.NasaRegistrationController.registrationForm());
