@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                           controllers.Application.index(email ?= null, vfile ?= null, dataset ?= null)
 
 # Authentication
 GET     /login                              controllers.Application.login()
@@ -20,29 +20,22 @@ POST	/solve/report				controllers.BugReportController.solveReport()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-# dashboard
-GET	    /dashboard				controllers.DashboardController.dashboard()
- 
-# About Us
-GET	    /aboutus				controllers.AboutusController.aboutus()
-
 # recommendation
-GET		/estimator				controllers.EstimateController.estimate(email ?= null, vfile ?= null, dataset ?= null)
-POST	/estimator/1			controllers.EstimateController.estimate1()
-GET		/estimator/1			controllers.EstimateController.estimate1()			
-GET		/estimator/2			controllers.EstimateController.estimate2()
-GET		/estimator/3			controllers.EstimateController.estimate3()
-GET		/estimator/tutorial		controllers.EstimateController.tutorial()
-GET		/estimator/login		controllers.EstimateController.login()
-POST    /estimator/login        controllers.EstimateController.authenticate()
-GET     /estimator/logout       controllers.EstimateController.logout()
-GET		/estimator/accountSummary		controllers.EstimateController.accountSummary(userName ?= null)
+POST	/estimator/1			controllers.Application.estimate1()
+GET		/estimator/1			controllers.Application.estimate1()			
+GET		/estimator/2			controllers.Application.estimate2()
+GET		/estimator/3			controllers.Application.estimate3()
+GET		/estimator/tutorial		controllers.Application.tutorial()
+GET		/estimator/login		controllers.Application.login()
+POST    /estimator/login        controllers.Application.authenticate()
+GET     /estimator/logout       controllers.Application.logout()
+GET		/estimator/accountSummary		controllers.Application.accountSummary(userName ?= null)
 
 #Registration
-GET 	        /estimator/register controllers.NasaRegistrationController.registrationForm()
-POST            /estimator/register/publish controllers.NasaRegistrationController.submit()
-GET             /estimator/updateUser controllers.NasaRegistrationController.updateForm()
-POST            /estimator/updateUser/update controllers.NasaRegistrationController.update()
-GET             /estimator/deleteUser controllers.NasaRegistrationController.deleteForm()
-POST            /estimator/deleteUser/delete controllers.NasaRegistrationController.delete()
-GET             /estimator/adminPage controllers.NasaRegistrationController.adminPage()
+GET 	        /estimator/register              controllers.NasaRegistrationController.registrationForm()
+POST            /estimator/register/publish      controllers.NasaRegistrationController.submit()
+GET             /estimator/updateUser            controllers.NasaRegistrationController.updateForm()
+POST            /estimator/updateUser/update     controllers.NasaRegistrationController.update()
+GET             /estimator/deleteUser            controllers.NasaRegistrationController.deleteForm()
+POST            /estimator/deleteUser/delete     controllers.NasaRegistrationController.delete()
+GET             /estimator/adminPage             controllers.NasaRegistrationController.adminPage()

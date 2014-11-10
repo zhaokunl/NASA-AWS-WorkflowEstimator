@@ -22,7 +22,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="@routes.NasaRegistrationController.updateForm()">Update User Details</a></li>
 							<li><a href="@routes.NasaRegistrationController.deleteForm()">Delete User</a></li>
-							<li><a href="@routes.EstimateController.accountSummary(session.get("username"))">Account Summary</a></li>
+							<li><a href="@routes.Application.accountSummary(session.get("username"))">Account Summary</a></li>
 						</ul>
 						</li>
 
@@ -30,12 +30,12 @@
 
 					@if(!session.get("username")){
 					
-						<form class="navbar-form navbar-right" action="@routes.EstimateController.login()">
+						<form class="navbar-form navbar-right" action="@routes.Application.login()">
 							<button type="submit" class="btn btn-success">Log in</button>
 						</form>
 					}else{
 						<li><a href="/estimator/tutorial">Estimator</a></li>
-						<form class="navbar-form navbar-right" action="@routes.EstimateController.logout()">
+						<form class="navbar-form navbar-right" action="@routes.Application.logout()">
 							<button type="submit" class="btn btn-success">Log out</button>
 						</form>
 					}
