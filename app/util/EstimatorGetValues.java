@@ -130,20 +130,16 @@ public class EstimatorGetValues {
 
 		
 }	
-		public static JsonObject getDelete(Map<String, String[]> delForm){
+	public static JsonObject getDelete(Map<String, String[]> delForm){
 			
 		String userNameField = delForm.get("userNameField")[0];
 		String passwordField = delForm.get("passwordField")[0];
 		
 		
-			try {
-
+		try {
 			retFormValues.addProperty("userName", userNameField);
-			retFormValues.addProperty("password", passwordField);			
-				
+			retFormValues.addProperty("password", passwordField);				
 		}
-
-		
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -151,6 +147,6 @@ public class EstimatorGetValues {
 		}
 
 		return retFormValues;
-}
+    }
 }
 

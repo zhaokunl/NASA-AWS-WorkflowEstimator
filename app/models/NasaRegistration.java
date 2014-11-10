@@ -196,8 +196,6 @@ public class NasaRegistration {
 		JsonNode usersNode = APICall.callAPI(GET_IND_USER_DATA);
 
 		System.out.println("Output1:" + GET_IND_USER_DATA);
-		// System.out.println("Value inside getUserInfo:" +
-		// usersNode.path(0).findPath("userName").asText());
 		System.out.println("Check:" + usersNode.toString());
 		// if no value is returned or error or is not json array
 		if (usersNode == null || usersNode.has("error")) {

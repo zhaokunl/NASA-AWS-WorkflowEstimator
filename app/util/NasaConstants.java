@@ -1,4 +1,4 @@
-/*
+C/*
  * Copyright (c) 2013 Carnegie Mellon University Silicon Valley. 
  * All rights reserved. 
  * 
@@ -21,8 +21,6 @@ package util;
 
 public class NasaConstants {
 
-
-
 	/*
 	 * Starting here is the migration from calling API1.1 to API1.3
 	 */
@@ -32,6 +30,4 @@ public class NasaConstants {
 	public static final String ADD_USER = "addContestUser/"; 
 	public static final String DELETE_USER = "deleteContestUser/";
 	public static final String UPDATE_USER = "updateContestUser/";
-	
-	
 }
