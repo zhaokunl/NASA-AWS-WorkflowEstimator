@@ -20,6 +20,9 @@ POST	/solve/report				controllers.BugReportController.solveReport()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
+# About Us
+GET	/aboutus				    controllers.AboutusController.aboutus()
+
 # recommendation
 POST	/estimator/1			controllers.Application.estimate1()
 GET		/estimator/1			controllers.Application.estimate1()			
