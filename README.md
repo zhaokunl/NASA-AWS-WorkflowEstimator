@@ -136,7 +136,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9005/estimator/2
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-8. <a name="8"></a>**GET Virtual Machine Recommendation**
+8. <a name="8"></a>**Get Virtual Machine Recommendation**
     - **Purpose**: Get the information of recommended virtual machine for workflow execution
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9005/estimator/3
