@@ -153,7 +153,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9005/estimator/3
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-9. <a name="9"></a>**Registration form**
+9. <a name="9"></a>**Registrate New User form**
     - **Purpose**: Query a specific sensor.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9000/getSensor/<"sensorName">/<"resultFormat">
