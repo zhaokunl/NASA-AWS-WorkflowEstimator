@@ -36,7 +36,7 @@ Play server process ID is 26045
 ```
 Overview:
 ---------
-Currently we are providing APIs in 2 categores:
+Currently we are providing APIs in 3 categores:
 
 **Category 1: Account Management**<br/>
    - [Log in](#1)
@@ -76,22 +76,24 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
 2. <a name="2"></a>**Log in with authentication**
     - **Purpose**: Log into the website with authentication. 
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/login
+    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/login?username=<"username">&password=<"password">
     - **Semantics**:
         - **username**: Existing user name.
         - **password**: Password of the user.
     - **Sample Usages**: 
     	- **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9005/estimator/login
+            curl http://einstein.sv.cmu.edu:9005/estimator/login?username=<"username">&password=<"password">
       	- **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
 
 3. <a name="3"></a>**Account Summary**
     - **Purpose**: Provide a summary of the account.
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/estimator/accountSummary
+    - **URL**: http://einstein.sv.cmu.edu:9000/estimator/accountSummary?userName=<"username">
+    - **Semantics**:
+        - **username**: Existing user name.
     - **Sample Usages**:
       - **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9000/estimator/accountSummary
+            curl http://einstein.sv.cmu.edu:9000/estimator/accountSummary?userName=<username>
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
 4. <a name="4"></a>**Log out**
