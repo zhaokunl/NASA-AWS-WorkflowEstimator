@@ -34,6 +34,11 @@ Play server process ID is 26045
 [info] play - Application started (Prod)
 [info] play - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 ```
+
+Service URL:
+---------
+http://einstein.sv.cmu.edu:9005
+
 Overview:
 ---------
 Currently we are providing APIs in 3 categores:
@@ -86,12 +91,12 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
 3. <a name="3"></a>**Account Summary**
     - **Purpose**: Provide a summary of the account.
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/estimator/accountSummary?userName=<"username">
+    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/accountSummary?userName=<"username">
     - **Semantics**:
         - **username**: Existing user name.
     - **Sample Usages**:
       - **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9000/estimator/accountSummary?userName=<username>
+            curl http://einstein.sv.cmu.edu:9005/estimator/accountSummary?userName=<username>
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
 4. <a name="4"></a>**Log out**
