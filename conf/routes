@@ -10,13 +10,6 @@ GET     /login                              controllers.Application.login()
 POST    /login                              controllers.Application.authenticate()
 GET     /logout                             controllers.Application.logout()
 
-# BugReporting
-GET     /bugs                       controllers.BugReportController.reports()
-GET     /newReport					controllers.BugReportController.newReport()
-GET	    /bug/list					controllers.BugReportController.list()
-POST	/delete/report				controllers.BugReportController.deleteReport()
-POST	/solve/report				controllers.BugReportController.solveReport()
-
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
@@ -24,7 +17,7 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET	/aboutus				    controllers.AboutusController.aboutus()
 
 # recommendation
-POST	/estimator/1			controllers.Application.estimate1()
+GET     /estimator              controllers.Application.index(email ?= null, vfile ?= null, dataset ?= null)
 GET		/estimator/1			controllers.Application.estimate1()			
 GET		/estimator/2			controllers.Application.estimate2()
 GET		/estimator/3			controllers.Application.estimate3()

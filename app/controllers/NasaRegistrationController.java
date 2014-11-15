@@ -119,8 +119,6 @@ public class NasaRegistrationController extends Controller {
 		
 		try {
 
-			
-			
 			urlStr = urlStr + '/' + getJsonValues.get("userName").getAsString() + '/'
 			       		+ getJsonValues.get("password").getAsString();
 			

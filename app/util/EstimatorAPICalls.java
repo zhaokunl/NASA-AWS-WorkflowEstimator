@@ -85,19 +85,9 @@ public class EstimatorAPICalls {
 		URL url = new URL(urlStr);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("DELETE");
-		// conn.setRequestProperty("Content-Type", "application/json");
-		// conn.setRequestProperty("Accept", "application/json");
 		conn.setDoOutput(true);
-
 		conn.connect();
-		/*
-		 * // Create the form content OutputStream out = conn.getOutputStream();
-		 * Writer writer = new OutputStreamWriter(out, "UTF-8");
-		 * 
-		 * writer.write(jsonString);
-		 * 
-		 * writer.close(); out.close();
-		 */
+
 		System.out.println("response code:" + conn.getResponseMessage());
 		if (conn.getResponseCode() != 201) {
 			System.out.println("Custom Error:" + conn.getResponseCode());

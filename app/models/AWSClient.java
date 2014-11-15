@@ -27,7 +27,6 @@ public class AWSClient {
         try {
 			s3 = new AmazonS3Client(new PropertiesCredentials(properties));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Region usWest1 = Region.getRegion(Regions.US_WEST_1);
