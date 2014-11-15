@@ -145,9 +145,6 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
     - **Purpose**: Get the information of recommended virtual machine for workflow execution
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9005/estimator/3
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **sensorName** (string, not null): Name of the sensor, which cannot be changed
-        - **sensorUserDefinedFields** (string, not null): User defined fields.
     - **Sample Usages**:
       - **Command Line Example**: 
           curl http://einstein.sv.cmu.edu:9005/estimator/3
