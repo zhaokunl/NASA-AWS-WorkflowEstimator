@@ -160,7 +160,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
 9. <a name="9"></a>**ADD A SERVICE USER**
     - **Purpose**: Add a new service user.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9005/register
+    - **URL**: http://einstein.sv.cmu.edu:9005/register/publish
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **userName** (string, not null): Non existing unique user name
         - **password** (string, not null): password
@@ -178,13 +178,13 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           1. Prepare input service user data in a json file:
               - "contestUser.json" file contains: {"userName": "John", "password": "123", "firstName": "John"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/register"
+          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/register/publish"
       - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used or register limit has been reached.
       
 10. <a name="10"></a>**UPDATE A SERVICE USER**
     - **Purpose**: Update a new service user.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/updateUser
+    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/updateUser/update
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **userName** (string, not null): Non existing unique user name
         - **password** (string, not null): password
@@ -202,19 +202,19 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           1. Prepare input contest user data in a json file:
               - "contestUser.json" file contains: {"userName": "John", "password": "123", "firstName": "John", "lastName": "White"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/estimator/updateUser"
+          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/estimator/updateUser/update"
       - **Result**: HTTP 201 if the user has been successfully updated, HTTP 400 if the userName/password is wrong
       
 11. <a name="11"></a>**DELETE A SERVICE USER**
     - **Purpose**: Delete a service user.
     - **Method**: DELETE
-    - **URL**: http://einstein.sv.cmu.edu:9005/deleteUser/<"userName">/<"password">
+    - **URL**: http://einstein.sv.cmu.edu:9005/deleteUser/delete/<"userName">/<"password">
     - **Semantics**
         - **userName** (string, not null): Service user name
         - **password** (string, not null): Password
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. curl -X DELETE http://localhost:9005/deleteUser/John/123
+          1. curl -X DELETE http://localhost:9005/deleteUser/delete/John/123
       - **Result**: HTTP 201 if the contest user has been successfully deleted
 
 12. <a name="12"></a>**GET INFORMATION OF CURRENT USAGE SUMMARY AND DETAILS**
@@ -229,7 +229,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
 13. <a name="13"></a>**BUG REPORT**
     - **Purpose**: Report new bug.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9005/bugs
+    - **URL**: http://einstein.sv.cmu.edu:9005/newReport
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **yourName** (string, not null): user name
         - **bugTitle** (string, not null): bug title
@@ -240,7 +240,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           1. Prepare input contest user data in a json file:
               - "contestUser.json" file contains: {"yourName": "John", "bugTitle": "pageonefailed", "email": "john@gmail.com"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/bugs"
+          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/newReport"
       - **Result**: HTTP 201 if the user has been successfully updated, HTTP 400 if the userName/password is wrong
       
 14. <a name="14"></a>**BUG LIST**
