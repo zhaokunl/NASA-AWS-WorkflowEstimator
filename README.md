@@ -34,29 +34,41 @@ Play server process ID is 26045
 [info] play - Application started (Prod)
 [info] play - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 ```
+To specify a customized port:
+
+For the production mode in Play 2.x - run
+
+```
+activator "start -Dhttp.port=9006"
+```
+
+Service URL:
+---------
+http://einstein.sv.cmu.edu:9006
+
 Overview:
 ---------
-Currently we are providing APIs in 2 categores:
+Currently we are providing APIs in 3 categores:
 
-**Category 1: Recommadation**<br/>
+**Category 1: Account Management**<br/>
    - [Log in](#1)
    - [Log in with authentication](#2)
    - [Account Summary](#3)
    - [Log out](#4)
-   - [Tutorial](#5)
-   - [Estimate](#6)
-   - [POST Estimator1](#7)
-   - [GET Estimator1](#8)
-   - [Estimator2](#9)
-   - [Estimator3](#10)
 
-**Category 2: Registration**<br/>
-   - [Registration form](#11)
-   - [Submit](#12)
-   - [Update form](#13)
-   - [Update](#14)
-   - [Delete form](#15)
-   - [Admin page](#16)
+**Category 2: Recommandation**<br/>
+   - [Tutorial](#5)
+   - [Get Estimation](#6)
+   - [Get Estimation Result](#7)
+   - [Get Virtual Machine Recommendation](#8)
+
+**Category 3: Registration**<br/>
+   - [Registration form](#9)
+   - [Submit](#10)
+   - [Update form](#11)
+   - [Update](#12)
+   - [Delete form](#13)
+   - [Admin page](#14)
 
 Detailed Usages:
 ----------------
@@ -65,91 +77,57 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
 1. <a name="1"></a>**Log in**
     - **Purpose**: Log into the website with username and password.
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/estimator/login
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/login
     - **Sample Usages**:
-      - **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9000/estimator/login
-      - **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
+    	- **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/estimator/login
+    	- **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
     
 2. <a name="2"></a>**Log in with authentication**
     - **Purpose**: Log into the website with authentication. 
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/estimator/login
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/login?username=<"username">&password=<"password">
     - **Semantics**:
-        - **sensorName**: Existing sensor name.
-        - **startTime**: Start time of the readings to query.
-        - **endTime**: End time of the readings to query.
-        - **resultFormat**: Either JSON or CSV.
+        - **username**: Existing user name.
+        - **password**: Password of the user.
     - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getSensorReadingInRange/androidAccelerometer/1395266600000/1395279800000/csv
-      - **Sample csv result**: (sensorName,timestamp,value)<br/>
-          sensor1,1368568993000,517.0 <br/>
-          ... <br/>
-          sensor1,1368568896000,518.0
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getSensorReadingInRange/androidAccelerometer/1395266600000/1395279800000/json
-      - **Sample json result**: <br/>
-          [{"timestamp":1368568993000,"value":517,"sensorName":"sensor1"},
-          ... <br/>
-          {"timestamp":1368568896000,"value": 520,"sensorName":"sensor1"}]
-      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
+    	- **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/estimator/login?username=<"username">&password=<"password">
+      	- **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
 
 3. <a name="3"></a>**Account Summary**
     - **Purpose**: Provide a summary of the account.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addSensorCategory
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **sensorCategoryName** (string, not null): Non existing unique name of the sensor category
-        - **purpose** (string, optional): Purpose of the sensor category
-    - **Sensor type metadata format**: {"sensorCategoryName": <"sensorCategoryName">, "purpose": <"purpose">}    
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/accountSummary?userName=<"username">
+    - **Semantics**:
+        - **username**: Existing user name.
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. Prepare input sensor type metadata in a json file:
-              - "sensorCategory.json" file contains: {"sensorCategoryName": "Category 1", "purpose": "Test only"}
-          2. curl -H "Content-Type: application/json" -d @sensorCategory.json "http://einstein.sv.cmu.edu:9000/addSensorCategory"
-      - **Result**: HTTP 201 if the sensor category metadata has been successfully added to the database, HTTP 400 if the sensorCategoryName is already been used
-
+            curl http://einstein.sv.cmu.edu:9006/estimator/accountSummary?userName=<username>
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
 4. <a name="4"></a>**Log out**
     - **Purpose**: Log out from the website.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addSensorType
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **sensorTypeName** (string, not null): Non existing unique name of the sensor type
-        - **manufacturer** (string, optional): Name of the manufacturerof this sensor type
-        - **version** (string, optional): Version of the sensor type
-        - **maximumValue** (double, optional): Maximum value of the sensor reading under this sensor type
-        - **minimumValue** (double, optional): Minimum value of the sensor reading under this sensor type
-        - **unit** (string, optional): Unit of the sensor reading under this sensor type
-        - **interpreter** (string, optional): The interpreter used to parse the sensor reading under this sensor type
-        - **sensorTypeUserDefinedFields** (string): User defined fields
-        - **sensorCategoryName** (string, not null): Existing sensor category name which the sensor type belongs to
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/logout
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. Prepare input sensor type metadata in a json file:
-              - "sensorType.json" file contains: {"sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment"}
-          2. curl -H "Content-Type: application/json" -d @sensorType.json "http://einstein.sv.cmu.edu:9000/addSensorType"
-      - **Result**: HTTP 201 if the sensor type metadata has been successfully added to the database, HTTP 400 if failed.
+            curl http://einstein.sv.cmu.edu:9006/logout
+      - **Result**: HTTP 200 if the logged out successfully, HTTP 500 if failed.
 
 5. <a name="5"></a>**Tutorial**
-    - **Purpose**: Provide a turorial about this website.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addSensor
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **sensorName** (string, not null): Non existing unique name of the sensor
-        - **sensorTypeName** (string, not null): Existing name of its sensor type
-        - **deviceUri** (string, not null): Existing device URI it belongs to
-        - **sensorUserDefinedFields** (string, optional): User defined fields.
+    - **Purpose**: Provide a turorial video about how to connect the vistrails workflow to the Einstein Website.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/tutorial
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. Prepare input sensor metadata in a json file:
-              - "sensor.json" file contains: {"sensorName": "TestSensor", "sensorTypeName": "Humidity", "deviceUri": "www.testsensor.com", "sensorUserDefinedFields": "Test only"}
-          2. curl -H "Content-Type: application/json" -d @sensor.json "http://einstein.sv.cmu.edu:9000/addSensor"
-      - **Result**: HTTP 201 if the sensor metadata have been successfully added to the database, HTTP 400 if failed.
+            curl http://einstein.sv.cmu.edu:9006/estimator/tutorial
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-6. <a name="6"></a>**Estimator**
-    - **Purpose**: Estimate for the workflow.
+6. <a name="6"></a>**Get Estimation**
+    - **Purpose**: Run estimattion for the workflow.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/updateSensorType
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/1
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **sensorTypeName** (string, not null): Name of the sensor type, which cannot be changed
         - **sensorTypeUserDefinedFields** (string, not null): User defined fields
@@ -161,175 +139,37 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if the sensor type metadata has been successfully updated to the database
 
 
-7. <a name="7"></a>**POST Estimator1**
-    - **Purpose**: Edit a sensor category to sensor data service platform.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/updateSensorCategory
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **sensorCategoryName** (string, not null): Name of the sensor category, which cannot be changed
-        - **purpose** (string, not null): Purpose of the sensor category
+7. <a name="7"></a>**Get Estimation Result**
+    - **Purpose**: Get the result of workflow estimation
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/2
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. Prepare input sensor type metadata in a json file:
-              - "sensorCategory.json" file contains: {"sensorCategoryName": "Category 1", "purpose": "Production only"}
-          2. curl -H "Content-Type: application/json" -d @sensorCategory.json "http://einstein.sv.cmu.edu:9000/updateSensorCategory"
-      - **Result**: HTTP 200 if the sensor category metadata has been successfully updated to the database
+          curl http://einstein.sv.cmu.edu:9006/estimator/2
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-8. <a name="8"></a>**GET Estimator1**
-    - **Purpose**: Edit a sensor to sensor data service platform.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/updateSensor
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **sensorName** (string, not null): Name of the sensor, which cannot be changed
-        - **sensorUserDefinedFields** (string, not null): User defined fields.
+8. <a name="8"></a>**Get Virtual Machine Recommendation**
+    - **Purpose**: Get the information of recommended virtual machine for workflow execution
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/3
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. Prepare input sensor metadata in a json file:
-              - "sensor.json" file contains: {"sensorName": "TestSensor", "sensorUserDefinedFields": "Production only"}
-          2. curl -H "Content-Type: application/json" -d @sensor.json "http://einstein.sv.cmu.edu:9000/updateSensor"
-      - **Result**: HTTP 200 if the sensor metadata have been successfully updated to the database
+          curl http://einstein.sv.cmu.edu:9006/estimator/3
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
+
+9. <a name="9"></a>**SHOW USER REGISTER PAGE**
+    - **Purpose**: Show user register page.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/register
+    - **Sample Usages**:
+      - **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/estimator/tutorial
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
-9. <a name="9"></a>**Estimator2**
-    - **Purpose**: Query a specific sensor category.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getSensorCategory/<"sensorCategoryName">/<"resultFormat">
-    - **Semantics**: 
-        - **sensorCategoryName**: Sensor category name.
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Result**: HTTP 200 if the sensorCategoryName exists, HTTP 404 if not found
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getSensorCategory/sensorCategory1/csv<br/>
-      - **Sample csv result**: (sensorCategoryName,purpose) </br>sensorCategory1, temp
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getSensorCategory/sensorCategory1/json
-      - **Sample json result**: {"sensorCategoryName":sensorCategory1,"purpose":"temp"}
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-10. <a name="10"></a>**Estimator3**
-    - **Purpose**: Query all sensors.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getAllSensors/<"resultFormat">
-    - **Semantics**: 
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getAllSensors/csv<br/>
-      - **Sample csv result**: (sensorName, sensorUserDefinedFields, deviceUri, sensorTypeName, manufacturer,version,maximumValue,minimumValue,unit,interpreter,sensorTypeUserDefinedFields, sensorCategoryName) </br>sensor01, for test, www.device.com/001, Humidity, Motorola, 1.0, 100, 0, Percentage, MyInterpreter, Testing only, Environment, test only
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getAllSensors/json
-      - **Sample json result**: [{"sensorName": "sensor01", "sensorUserDefinedFields": "for test", "deviceUri": "www.device.com/001","sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment", "purpose": "test only"}]
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-11. <a name="11"></a>**Registration form**
-    - **Purpose**: Query a specific sensor.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getSensor/<"sensorName">/<"resultFormat">
-    - **Semantics**: 
-        - **sensorName**: Sensor name
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**:  
-      - **Result**: HTTP 200 if the sensorName exists, HTTP 404 if not found
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getSensor/<"sensorName">/csv<br/>
-      - **Sample csv result**: (sensorName, sensorUserDefinedFields, deviceUri, sensorTypeName, manufacturer,version,maxValue,minValue,unit,interpreter,sensorTypeUserDefinedFields, sensorCategoryName) </br>sensor1, for test, www.device.com, Humidity, Motorola, 1.0, 100, 0, Percentage, MyInterpreter, Testing only, Environment
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getSensor/sensor1/json
-      - **Sample json result**: {"sensorName": "sensor1", "sensorUserDefinedFields": "for test", "deviceUri":"www.device.com", "sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment"}
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-12. <a name="12"></a>**Submit**
-    - **Purpose**: Delete a sensor type from sensor data service platform.
-    - **Method**: DELETE
-    - **URL**: http://einstein.sv.cmu.edu:9000/deleteSensorType/<"sensorTypeName">
-    - **Semantics**
-        - **sensorTypeName** (string, not null): Name of the sensor type
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          1. curl -X DELETE http://localhost:9000/deleteSensorType/testSensorTypeName
-      - **Result**: HTTP 201 if the sensor type metadata has been successfully deleted from the database
-
-14. <a name="14"></a>**Update form**
-    - **Purpose**: Delete a sensor from sensor data service platform.
-    - **Method**: DELETE
-    - **URL**: http://einstein.sv.cmu.edu:9000/deleteSensor/<"sensorName">
-    - **Semantics**
-        - **sensorName** (string, not null): Name of the sensor
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          1. curl -X DELETE http://localhost:9000/deleteSensor/testSensorName
-      - **Result**: HTTP 201 if the sensor metadata has been successfully deleted from the database
-
-15. <a name="15"></a>**Update**
-    - **Purpose**: Add a new user to sensor data service platform.
+10. <a name="10"></a>**ADD A SERVICE USER**
+    - **Purpose**: A new service user register estimation service.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addUser
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **userName** (string, not null): Non existing unique user name
-        - **userProfile** (string, optional): User profile
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          1. Prepare input sensor type metadata in a json file:
-              - "user.json" file contains: {"userName": "John", "userProfile": "CMU student"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9000/addUser"
-      - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used
-
-16. <a name="16"></a>**Delete form**
-    - **Purpose**: Query a specific user.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9000/getUser/<"userName">/<"resultFormat">
-    - **Semantics**: 
-        - **userName**: Existing user name.
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample csv request**: http://einstein.sv.cmu.edu:9000/getUser/John/csv<br/>
-      - **Sample csv result**: (userName,userProfile) </br>John, CMU student
-      - **Sample json request**: http://einstein.sv.cmu.edu:9000/getUser/John/json
-      - **Sample json result**: {"userName":John,"userProfile":"CMU student"}
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-17. <a name="17"></a>**Update page**
-    - **Purpose**: Add a new sensor as a registered user to sensor data service platform.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addSensor
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **sensorName** (string, not null): Non existing unique name of the sensor
-        - **sensorTypeName** (string, not null): Existing name of its sensor type
-        - **deviceUri** (string, not null): Existing device URI it belongs to
-        - **sensorUserDefinedFields** (string, optional): User defined fields.
-        - **userName**(string, not null): Existing user name
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          1. Prepare input sensor metadata in a json file:
-              - "sensor.json" file contains: {"sensorName": "TestSensor", "sensorTypeName": "Humidity", "deviceUri": "www.testsensor.com", "sensorUserDefinedFields": "Test only", "userName":"John"}
-          2. curl -H "Content-Type: application/json" -d @sensor.json "http://einstein.sv.cmu.edu:9000/addSensor"
-      - **Result**: HTTP 201 if the sensor metadata have been successfully added to the database, HTTP 400 if failed.
-
-18. <a name="18"></a>**GET ALL ESTIMATIONS AS A REGISTERED USER**
-    - **Purpose**: Query all sensors which has been added by a registered user.
-    - **Method**: GET(Specify user name in request header)
-    - **URL**: http://einstein.sv.cmu.edu:9000/getAllSensors/<"resultFormat">
-    - **Semantics**: 
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**: 
-      - **Sample json request**: curl -H "Authorization:John" http://einstein.sv.cmu.edu:9000/getAllSensorTypes/json
-      - **Sample json result**: [{"sensorName": "sensor01", "sensorUserDefinedFields": "for test", "deviceUri": "www.device.com/001","sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment", "purpose": "test only"}]
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-
-19. <a name="19"></a>**GET A SPECIFIC ESTIMATION AS A REGISTERED USER**
-    - **Purpose**: Query a specific sensor which has been added by a registered user.
-    - **Method**: GET (Specify user name in request header)
-    - **URL**: http://einstein.sv.cmu.edu:9000/getSensor/<"sensorName">/<"resultFormat">
-    - **Semantics**: 
-        - **sensorName**: Sensor name
-        - **resultFormat**: Either JSON or CSV.
-    - **Sample Usages**:  
-      - **Sample csv request**: curl -H "Authorization:John" http://einstein.sv.cmu.edu:9000/getSensor/<"sensorName">/csv<br/>
-      - **Sample csv result**: (sensorName, sensorUserDefinedFields, deviceUri, sensorTypeName, manufacturer,version,maxValue,minValue,unit,interpreter,sensorTypeUserDefinedFields, sensorCategoryName) </br>sensor1, for test, www.device.com, Humidity, Motorola, 1.0, 100, 0, Percentage, MyInterpreter, Testing only, Environment
-      - **Sample json request**: curl -H "Authorization:John" http://einstein.sv.cmu.edu:9000/getSensor/sensor1/json
-      - **Sample json result**: {"sensorName": "sensor1", "sensorUserDefinedFields": "for test", "deviceUri":"www.device.com", "sensorTypeName": "Humidity", "manufacturer": "Motorola", "version": "1.0", "maximumValue": 100, "minimumValue": 0, "unit": "Percentage", "interpreter": "MyInterpreter", "sensorTypeUserDefinedFields": "Testing only", "sensorCategoryName": "Environment"}
-      - **Result**: HTTP 200 if successful, HTTP 404 if failed.
-
-
-20. <a name="20"></a>**ADD A CONTEST USER**
-    - **Purpose**: Add a new contest user.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addContestUser
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/register/publish
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **userName** (string, not null): Non existing unique user name
         - **password** (string, not null): password
@@ -340,17 +180,29 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
         - **email** (string, optional): email
         - **researchArea** (string, optional): research area
         - **goal** (string, optional): goal
+        - **algo** (string, optional): algo
+        - **budgetConcerns** (string, optional): budget concerns
+        - **AWSFamilarity** (string, optional): AWS familarity
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. Prepare input contest user data in a json file:
+          1. Prepare input service user data in a json file:
               - "contestUser.json" file contains: {"userName": "John", "password": "123", "firstName": "John"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9000/addContestUser"
+          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9006/estimator/register/publish"
       - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used or register limit has been reached.
+
+11. <a name="11"></a>**SHOW USER UPDATE PAGE**
+    - **Purpose**: Show user update page.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/updateUser
+    - **Sample Usages**:
+      - **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/estimator/updateUser
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
-21. <a name="21"></a>**UPDATE A CONTEST USER**
-    - **Purpose**: Update a new contest user.
+12. <a name="12"></a>**UPDATE A SERVICE USER**
+    - **Purpose**: Update a service user's information.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/updateontestUser
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/updateUser/update
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **userName** (string, not null): Non existing unique user name
         - **password** (string, not null): password
@@ -361,26 +213,98 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
         - **email** (string, optional): email
         - **researchArea** (string, optional): research area
         - **goal** (string, optional): goal
+        - **algo** (string, optional): algo
+        - **budgetConcerns** (string, optional): budget concerns
+        - **AWSFamilarity** (string, optional): AWS familarity
     - **Sample Usages**:
       - **Command Line Example**: 
           1. Prepare input contest user data in a json file:
               - "contestUser.json" file contains: {"userName": "John", "password": "123", "firstName": "John", "lastName": "White"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9000/updateContestUser"
+          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9006/estimator/updateUser/update"
       - **Result**: HTTP 201 if the user has been successfully updated, HTTP 400 if the userName/password is wrong
-      
-22. <a name="22"></a>**DELETE A CONTEST USER**
-    - **Purpose**: Delete a contest user.
+
+13. <a name="13"></a>**SHOW USER DELETE PAGE**
+    - **Purpose**: Show user delete page.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/deleteUser
+    - **Sample Usages**:
+      - **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/estimator/deleteUser
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.      
+
+14. <a name="14"></a>**DELETE A SERVICE USER**
+    - **Purpose**: Delete a service user.
     - **Method**: DELETE
-    - **URL**: http://einstein.sv.cmu.edu:9000/deleteContestUser/<"userName">/<"password">
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/deleteUser/delete<"userName">/<"password">
     - **Semantics**
-        - **userName** (string, not null): Contest user name
+        - **userName** (string, not null): Service user name
         - **password** (string, not null): Password
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. curl -X DELETE http://localhost:9000/deleteContestUser/John/123
+          1. curl -X DELETE http://einstein.sv.cmu.edu:9006/estimator/deleteUser/delete/John/123
       - **Result**: HTTP 201 if the contest user has been successfully deleted
+
+15. <a name="15"></a>**GET INFORMATION OF CURRENT USAGE SUMMARY AND DETAILS**
+    - **Purpose**: Get information of current usage summary and details.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/adminPage">
+    - **Sample Usages**:
+      - **Command Line Example**: 
+          curl http://einstein.sv.cmu.edu:9006/estimator/adminPage
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
+
+16. <a name="16"></a>**SHOW REPORT BUGS PAGE**
+    - **Purpose**: Show report new bugs page.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/bugs
+    - **Sample Usages**:
+      - **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/bugs
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found. 
+
+17. <a name="17"></a>**BUG REPORT**
+    - **Purpose**: Report new bug.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/newReport
+    - **Semantics**:
+        - **name** : user name
+        - **title** : bug title
+        - **email** : email
+        - **organization** : organization
+        - **description** : description
+    - **Sample Usages**: 
+    	- **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/newReport?name=<"username">&title=<"title">&email=<"email">
+      	- **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
       
-[1]: http://einstein.sv.cmu.edu:9000/ "The Application Server running in the Smart Spaces Lab, CMUSV"
+18. <a name="18"></a>**BUG LIST**
+    - **Purpose**: List bug informations.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/bug/list
+    - **Sample Usages**:
+      - **Command Line Example**: 
+          curl http://einstein.sv.cmu.edu:9006/bug/list
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
+     
+19. <a name="19"></a>**DASHBOARD**
+    - **Purpose**: Get informtion about overall information.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/dashboard
+    - **Sample Usages**:
+      - **Command Line Example**: 
+          curl http://einstein.sv.cmu.edu:9006/dashboard
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
+
+20. <a name="20"></a>**ABOUT US**
+    - **Purpose**: Get information about developers.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/aboutus
+    - **Sample Usages**:
+      - **Command Line Example**: 
+          curl http://einstein.sv.cmu.edu:9006/aboutus
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
+      
+[1]: http://einstein.sv.cmu.edu:9006/ "The Application Server running in the Smart Spaces Lab, CMUSV"
 
 ## Support
 
