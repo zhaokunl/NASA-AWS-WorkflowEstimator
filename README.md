@@ -39,7 +39,7 @@ To specify a customized port:
 For the production mode in Play 2.x - run
 
 ```
-activator "start -Dhttp.port=8080"
+activator "start -Dhttp.port=9005"
 ```
 
 Service URL:
