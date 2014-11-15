@@ -77,57 +77,57 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
 1. <a name="1"></a>**Log in**
     - **Purpose**: Log into the website with username and password.
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/login
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/login
     - **Sample Usages**:
     	- **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9005/estimator/login
+            curl http://einstein.sv.cmu.edu:9006/estimator/login
     	- **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
     
 2. <a name="2"></a>**Log in with authentication**
     - **Purpose**: Log into the website with authentication. 
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/login?username=<"username">&password=<"password">
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/login?username=<"username">&password=<"password">
     - **Semantics**:
         - **username**: Existing user name.
         - **password**: Password of the user.
     - **Sample Usages**: 
     	- **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9005/estimator/login?username=<"username">&password=<"password">
+            curl http://einstein.sv.cmu.edu:9006/estimator/login?username=<"username">&password=<"password">
       	- **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
 
 3. <a name="3"></a>**Account Summary**
     - **Purpose**: Provide a summary of the account.
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/accountSummary?userName=<"username">
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/accountSummary?userName=<"username">
     - **Semantics**:
         - **username**: Existing user name.
     - **Sample Usages**:
       - **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9005/estimator/accountSummary?userName=<username>
+            curl http://einstein.sv.cmu.edu:9006/estimator/accountSummary?userName=<username>
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
 4. <a name="4"></a>**Log out**
     - **Purpose**: Log out from the website.
-    - **Method**: Get
-    - **URL**: http://einstein.sv.cmu.edu:9005/logout
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/logout
     - **Sample Usages**:
       - **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9005/logout
+            curl http://einstein.sv.cmu.edu:9006/logout
       - **Result**: HTTP 200 if the logged out successfully, HTTP 500 if failed.
 
 5. <a name="5"></a>**Tutorial**
     - **Purpose**: Provide a turorial video about how to connect the vistrails workflow to the Einstein Website.
-    - **Method**: Get
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/tutorial
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/tutorial
     - **Sample Usages**:
       - **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9005/estimator/tutorial
+            curl http://einstein.sv.cmu.edu:9006/estimator/tutorial
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
 6. <a name="6"></a>**Get Estimation**
     - **Purpose**: Run estimattion for the workflow.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/1
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/1
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **sensorTypeName** (string, not null): Name of the sensor type, which cannot be changed
         - **sensorTypeUserDefinedFields** (string, not null): User defined fields
@@ -142,25 +142,34 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
 7. <a name="7"></a>**Get Estimation Result**
     - **Purpose**: Get the result of workflow estimation
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/2
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/2
     - **Sample Usages**:
       - **Command Line Example**: 
-          curl http://einstein.sv.cmu.edu:9005/estimator/2
+          curl http://einstein.sv.cmu.edu:9006/estimator/2
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
 8. <a name="8"></a>**Get Virtual Machine Recommendation**
     - **Purpose**: Get the information of recommended virtual machine for workflow execution
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/3
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/3
     - **Sample Usages**:
       - **Command Line Example**: 
-          curl http://einstein.sv.cmu.edu:9005/estimator/3
+          curl http://einstein.sv.cmu.edu:9006/estimator/3
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-9. <a name="9"></a>**ADD A SERVICE USER**
-    - **Purpose**: Add a new service user.
+9. <a name="9"></a>**SHOW REGISTER**
+    - **Purpose**: Show register information.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/register
+    - **Sample Usages**:
+      - **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/estimator/tutorial
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
+      
+10. <a name="10"></a>**SERVICE USER REGISTER**
+    - **Purpose**: A new service user register estimation service.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9005/register/publish
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/register/publish
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **userName** (string, not null): Non existing unique user name
         - **password** (string, not null): password
@@ -178,13 +187,22 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           1. Prepare input service user data in a json file:
               - "contestUser.json" file contains: {"userName": "John", "password": "123", "firstName": "John"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/register/publish"
+          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9006/estimator/register/publish"
       - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used or register limit has been reached.
+
+11. <a name="11"></a>**SHOW UPDATE**
+    - **Purpose**: Show update information.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/updateUser
+    - **Sample Usages**:
+      - **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/estimator/updateUser
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
-10. <a name="10"></a>**UPDATE A SERVICE USER**
-    - **Purpose**: Update a new service user.
+12. <a name="12"></a>**UPDATE A SERVICE USER**
+    - **Purpose**: Update a service user's information.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/updateUser/update
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/updateUser/update
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **userName** (string, not null): Non existing unique user name
         - **password** (string, not null): password
@@ -202,75 +220,91 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           1. Prepare input contest user data in a json file:
               - "contestUser.json" file contains: {"userName": "John", "password": "123", "firstName": "John", "lastName": "White"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/estimator/updateUser/update"
+          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9006/estimator/updateUser/update"
       - **Result**: HTTP 201 if the user has been successfully updated, HTTP 400 if the userName/password is wrong
-      
-11. <a name="11"></a>**DELETE A SERVICE USER**
+
+13. <a name="13"></a>**SHOW DELETE**
+    - **Purpose**: Show delete user information.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/deleteUser
+    - **Sample Usages**:
+      - **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/estimator/deleteUser
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.      
+
+14. <a name="14"></a>**DELETE A SERVICE USER**
     - **Purpose**: Delete a service user.
     - **Method**: DELETE
-    - **URL**: http://einstein.sv.cmu.edu:9005/deleteUser/delete/<"userName">/<"password">
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/deleteUser/delete<"userName">/<"password">
     - **Semantics**
         - **userName** (string, not null): Service user name
         - **password** (string, not null): Password
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. curl -X DELETE http://localhost:9005/deleteUser/delete/John/123
+          1. curl -X DELETE http://einstein.sv.cmu.edu:9006/estimator/deleteUser/delete/John/123
       - **Result**: HTTP 201 if the contest user has been successfully deleted
 
-12. <a name="12"></a>**GET INFORMATION OF CURRENT USAGE SUMMARY AND DETAILS**
+15. <a name="15"></a>**GET INFORMATION OF CURRENT USAGE SUMMARY AND DETAILS**
     - **Purpose**: Get information of current usage summary and details.
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/adminPage">
+    - **URL**: http://einstein.sv.cmu.edu:9006/estimator/adminPage">
     - **Sample Usages**:
       - **Command Line Example**: 
-          curl http://localhost:9005/estimator/adminPage
+          curl http://einstein.sv.cmu.edu:9006/estimator/adminPage
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-13. <a name="13"></a>**BUG REPORT**
-    - **Purpose**: Report new bug.
-    - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9005/newReport
-    - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **yourName** (string, not null): user name
-        - **bugTitle** (string, not null): bug title
-        - **email** (string, not null): email
-        - **organization** (string, optional): organization
-        - **description** (string, optional): description
+16. <a name="16"></a>**SHOW REPORT BUGS**
+    - **Purpose**: Show report new bugs information.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/bugs
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. Prepare input contest user data in a json file:
-              - "contestUser.json" file contains: {"yourName": "John", "bugTitle": "pageonefailed", "email": "john@gmail.com"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/newReport"
-      - **Result**: HTTP 201 if the user has been successfully updated, HTTP 400 if the userName/password is wrong
+            curl http://einstein.sv.cmu.edu:9006/bugs
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found. 
+
+17. <a name="17"></a>**BUG REPORT**
+    - **Purpose**: Report new bug.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9006/newReport
+    - **Semantics**:
+        - **name** : user name
+        - **title** : bug title
+        - **email** : email
+        - **organization** : organization
+        - **description** : description
+    - **Sample Usages**: 
+    	- **Command Line Example**: 
+            curl http://einstein.sv.cmu.edu:9006/newReport?name=<"username">&title=<"title">&email=<"email">
+      	- **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
       
-14. <a name="14"></a>**BUG LIST**
+18. <a name="18"></a>**BUG LIST**
     - **Purpose**: List bug informations.
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9005/bug/list
+    - **URL**: http://einstein.sv.cmu.edu:9006/bug/list
     - **Sample Usages**:
       - **Command Line Example**: 
-          curl http://einstein.sv.cmu.edu:9005/bug/list
+          curl http://einstein.sv.cmu.edu:9006/bug/list
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
      
-15. <a name="15"></a>**DASHBOARD**
+19. <a name="19"></a>**DASHBOARD**
     - **Purpose**: Get informtion about overall information.
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9005/dashboard
+    - **URL**: http://einstein.sv.cmu.edu:9006/dashboard
     - **Sample Usages**:
       - **Command Line Example**: 
-          curl http://einstein.sv.cmu.edu:9005/dashboard
+          curl http://einstein.sv.cmu.edu:9006/dashboard
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-16. <a name="16"></a>**ABOUT US**
+20. <a name="20"></a>**ABOUT US**
     - **Purpose**: Get information about developers.
     - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9005/aboutus
+    - **URL**: http://einstein.sv.cmu.edu:9006/aboutus
     - **Sample Usages**:
       - **Command Line Example**: 
-          curl http://einstein.sv.cmu.edu:9005/aboutus
+          curl http://einstein.sv.cmu.edu:9006/aboutus
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
-[1]: http://einstein.sv.cmu.edu:9005/ "The Application Server running in the Smart Spaces Lab, CMUSV"
+[1]: http://einstein.sv.cmu.edu:9006/ "The Application Server running in the Smart Spaces Lab, CMUSV"
 
 ## Support
 
