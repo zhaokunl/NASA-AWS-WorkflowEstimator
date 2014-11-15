@@ -34,6 +34,13 @@ Play server process ID is 26045
 [info] play - Application started (Prod)
 [info] play - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 ```
+To specify a customized port:
+
+For the production mode in Play 2.x - run
+
+```
+activator "start -Dhttp.port=8080"
+```
 
 Service URL:
 ---------
