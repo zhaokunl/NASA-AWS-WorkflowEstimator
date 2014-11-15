@@ -157,8 +157,8 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9006/estimator/3
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-9. <a name="9"></a>**SHOW REGISTER**
-    - **Purpose**: Show register information.
+9. <a name="9"></a>**SHOW USER REGISTER PAGE**
+    - **Purpose**: Show user register page.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/register
     - **Sample Usages**:
@@ -166,7 +166,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
             curl http://einstein.sv.cmu.edu:9006/estimator/tutorial
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
-10. <a name="10"></a>**SERVICE USER REGISTER**
+10. <a name="10"></a>**ADD A SERVICE USER**
     - **Purpose**: A new service user register estimation service.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/register/publish
@@ -190,8 +190,8 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9006/estimator/register/publish"
       - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used or register limit has been reached.
 
-11. <a name="11"></a>**SHOW UPDATE**
-    - **Purpose**: Show update information.
+11. <a name="11"></a>**SHOW USER UPDATE PAGE**
+    - **Purpose**: Show user update page.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/updateUser
     - **Sample Usages**:
@@ -223,8 +223,8 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9006/estimator/updateUser/update"
       - **Result**: HTTP 201 if the user has been successfully updated, HTTP 400 if the userName/password is wrong
 
-13. <a name="13"></a>**SHOW DELETE**
-    - **Purpose**: Show delete user information.
+13. <a name="13"></a>**SHOW USER DELETE PAGE**
+    - **Purpose**: Show user delete page.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/deleteUser
     - **Sample Usages**:
@@ -253,8 +253,8 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9006/estimator/adminPage
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-16. <a name="16"></a>**SHOW REPORT BUGS**
-    - **Purpose**: Show report new bugs information.
+16. <a name="16"></a>**SHOW REPORT BUGS PAGE**
+    - **Purpose**: Show report new bugs page.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/bugs
     - **Sample Usages**:
