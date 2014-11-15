@@ -117,10 +117,8 @@ public class Application extends Controller {
 		System.out.println("Email:" + loginForm.field("username").value());
 		if (loginForm.get().username.equals("admin")) {
 			System.out.println("Admin arena");
-			// session("username", loginForm.field("username").value());
 			return redirect(routes.NasaRegistrationController.adminPage());
 		} else {
-			// session("username", loginForm.field("username").value());
 			String userName = NasaRegistration.getUserInfo(
 					loginForm.field("username").value(),
 					loginForm.field("password").value());
@@ -131,11 +129,7 @@ public class Application extends Controller {
 						.accountSummary(userName));
 			} else
 				return redirect(routes.Application.authenticate());
-			// Retrieve value from API and check against userName and password.
-
 		}
-
-		// }
 	}
 
 	public static Result logout() {

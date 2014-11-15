@@ -18,7 +18,8 @@ GET	/aboutus				    controllers.AboutusController.aboutus()
 
 # recommendation
 GET     /estimator              controllers.Application.index(email ?= null, vfile ?= null, dataset ?= null)
-GET		/estimator/1			controllers.Application.estimate1()			
+GET		/estimator/1			controllers.Application.estimate1()	
+POST    /estimator/1            controllers.Application.estimate1()		
 GET		/estimator/2			controllers.Application.estimate2()
 GET		/estimator/3			controllers.Application.estimate3()
 GET		/estimator/tutorial		controllers.Application.tutorial()
