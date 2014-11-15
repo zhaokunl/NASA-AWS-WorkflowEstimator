@@ -39,12 +39,12 @@ To specify a customized port:
 For the production mode in Play 2.x - run
 
 ```
-activator "start -Dhttp.port=9005"
+activator "start -Dhttp.port=9006"
 ```
 
 Service URL:
 ---------
-http://einstein.sv.cmu.edu:9005
+http://einstein.sv.cmu.edu:9006
 
 Overview:
 ---------
