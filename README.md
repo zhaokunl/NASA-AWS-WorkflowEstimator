@@ -129,14 +129,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/1
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
-        - **sensorTypeName** (string, not null): Name of the sensor type, which cannot be changed
-        - **sensorTypeUserDefinedFields** (string, not null): User defined fields
     - **Sample Usages**:
-      - **Command Line Example**: 
-          1. Prepare input sensor type metadata in a json file:
-              - "sensorType.json" file contains: {"sensorTypeName": "Humidity", "sensorTypeUserDefinedFields": "Testing only"}
-          2. curl -H "Content-Type: application/json" -d @sensorType.json "http://einstein.sv.cmu.edu:9000/updateSensorType"
-      - **Result**: HTTP 200 if the sensor type metadata has been successfully updated to the database
 
 
 7. <a name="7"></a>**Get Estimation Result**
@@ -157,7 +150,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9006/estimator/3
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-9. <a name="9"></a>**SHOW USER REGISTER PAGE**
+9. <a name="9"></a>**Show user register page**
     - **Purpose**: Show user register page.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/register
@@ -166,7 +159,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
             curl http://einstein.sv.cmu.edu:9006/estimator/tutorial
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
-10. <a name="10"></a>**ADD A SERVICE USER**
+10. <a name="10"></a>**Add a service user**
     - **Purpose**: A new service user register estimation service.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/register/publish
@@ -190,7 +183,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9006/estimator/register/publish"
       - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used or register limit has been reached.
 
-11. <a name="11"></a>**SHOW USER UPDATE PAGE**
+11. <a name="11"></a>**Show user update page**
     - **Purpose**: Show user update page.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/updateUser
@@ -199,7 +192,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
             curl http://einstein.sv.cmu.edu:9006/estimator/updateUser
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
-12. <a name="12"></a>**UPDATE A SERVICE USER**
+12. <a name="12"></a>**Update a service user**
     - **Purpose**: Update a service user's information.
     - **Method**: POST
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/updateUser/update
@@ -223,7 +216,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9006/estimator/updateUser/update"
       - **Result**: HTTP 201 if the user has been successfully updated, HTTP 400 if the userName/password is wrong
 
-13. <a name="13"></a>**SHOW USER DELETE PAGE**
+13. <a name="13"></a>**Show user delete page**
     - **Purpose**: Show user delete page.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/deleteUser
@@ -232,7 +225,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
             curl http://einstein.sv.cmu.edu:9006/estimator/deleteUser
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.      
 
-14. <a name="14"></a>**DELETE A SERVICE USER**
+14. <a name="14"></a>**Delete a service user**
     - **Purpose**: Delete a service user.
     - **Method**: DELETE
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/deleteUser/delete<"userName">/<"password">
@@ -244,7 +237,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           1. curl -X DELETE http://einstein.sv.cmu.edu:9006/estimator/deleteUser/delete/John/123
       - **Result**: HTTP 201 if the contest user has been successfully deleted
 
-15. <a name="15"></a>**GET INFORMATION OF CURRENT USAGE SUMMARY AND DETAILS**
+15. <a name="15"></a>**Get information of current usage summary and details**
     - **Purpose**: Get information of current usage summary and details.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/estimator/adminPage">
@@ -253,7 +246,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9006/estimator/adminPage
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-16. <a name="16"></a>**SHOW REPORT BUGS PAGE**
+16. <a name="16"></a>**Show report bugs page**
     - **Purpose**: Show report new bugs page.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/bugs
@@ -262,7 +255,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
             curl http://einstein.sv.cmu.edu:9006/bugs
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found. 
 
-17. <a name="17"></a>**BUG REPORT**
+17. <a name="17"></a>**Bug report**
     - **Purpose**: Report new bug.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/newReport
@@ -277,7 +270,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
             curl http://einstein.sv.cmu.edu:9006/newReport?name=<"username">&title=<"title">&email=<"email">
       	- **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
       
-18. <a name="18"></a>**BUG LIST**
+18. <a name="18"></a>**Bug list**
     - **Purpose**: List bug informations.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/bug/list
@@ -286,7 +279,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9006/bug/list
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
      
-19. <a name="19"></a>**DASHBOARD**
+19. <a name="19"></a>**Dashboard**
     - **Purpose**: Get informtion about overall information.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/dashboard
@@ -295,7 +288,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9006/dashboard
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-20. <a name="20"></a>**ABOUT US**
+20. <a name="20"></a>**About us**
     - **Purpose**: Get information about developers.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/aboutus
