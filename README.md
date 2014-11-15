@@ -266,10 +266,10 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if successful, HTTP 404 if failed.
 
 
-20. <a name="20"></a>**ADD A CONTEST USER**
-    - **Purpose**: Add a new contest user.
+20. <a name="20"></a>**ADD A SERVICE USER**
+    - **Purpose**: Add a new service user.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/addContestUser
+    - **URL**: http://einstein.sv.cmu.edu:9005/register
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **userName** (string, not null): Non existing unique user name
         - **password** (string, not null): password
@@ -280,17 +280,20 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
         - **email** (string, optional): email
         - **researchArea** (string, optional): research area
         - **goal** (string, optional): goal
+        - **algo** (string, optional): algo
+        - **budgetConcerns** (string, optional): budget concerns
+        - **AWSFamilarity** (string, optional): AWS familarity
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. Prepare input contest user data in a json file:
+          1. Prepare input service user data in a json file:
               - "contestUser.json" file contains: {"userName": "John", "password": "123", "firstName": "John"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9000/addContestUser"
+          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/register"
       - **Result**: HTTP 201 if the user has been successfully added to the database, HTTP 400 if the userName is already been used or register limit has been reached.
       
-21. <a name="21"></a>**UPDATE A CONTEST USER**
-    - **Purpose**: Update a new contest user.
+21. <a name="21"></a>**UPDATE A SERVICE USER**
+    - **Purpose**: Update a new service user.
     - **Method**: POST
-    - **URL**: http://einstein.sv.cmu.edu:9000/updateontestUser
+    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/updateUser
     - **Semantics**: As a POST method, the API cannot be directly executed through a web browser.  Instead, it may be executed through Rails, JQuery, Python, BASH, etc.
         - **userName** (string, not null): Non existing unique user name
         - **password** (string, not null): password
@@ -301,26 +304,29 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
         - **email** (string, optional): email
         - **researchArea** (string, optional): research area
         - **goal** (string, optional): goal
+        - **algo** (string, optional): algo
+        - **budgetConcerns** (string, optional): budget concerns
+        - **AWSFamilarity** (string, optional): AWS familarity
     - **Sample Usages**:
       - **Command Line Example**: 
           1. Prepare input contest user data in a json file:
               - "contestUser.json" file contains: {"userName": "John", "password": "123", "firstName": "John", "lastName": "White"}
-          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9000/updateContestUser"
+          2. curl -H "Content-Type: application/json" -d @user.json "http://einstein.sv.cmu.edu:9005/estimator/updateUser"
       - **Result**: HTTP 201 if the user has been successfully updated, HTTP 400 if the userName/password is wrong
       
-22. <a name="22"></a>**DELETE A CONTEST USER**
-    - **Purpose**: Delete a contest user.
+22. <a name="22"></a>**DELETE A SERVICE USER**
+    - **Purpose**: Delete a service user.
     - **Method**: DELETE
-    - **URL**: http://einstein.sv.cmu.edu:9000/deleteContestUser/<"userName">/<"password">
+    - **URL**: http://einstein.sv.cmu.edu:9005/deleteUser/<"userName">/<"password">
     - **Semantics**
-        - **userName** (string, not null): Contest user name
+        - **userName** (string, not null): Service user name
         - **password** (string, not null): Password
     - **Sample Usages**:
       - **Command Line Example**: 
-          1. curl -X DELETE http://localhost:9000/deleteContestUser/John/123
+          1. curl -X DELETE http://localhost:9005/deleteUser/John/123
       - **Result**: HTTP 201 if the contest user has been successfully deleted
       
-[1]: http://einstein.sv.cmu.edu:9000/ "The Application Server running in the Smart Spaces Lab, CMUSV"
+[1]: http://einstein.sv.cmu.edu:9005/ "The Application Server running in the Smart Spaces Lab, CMUSV"
 
 ## Support
 
