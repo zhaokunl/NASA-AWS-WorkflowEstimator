@@ -325,6 +325,14 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           1. curl -X DELETE http://localhost:9005/deleteUser/John/123
       - **Result**: HTTP 201 if the contest user has been successfully deleted
+23. <a name="23"></a>**GET INFORMATION OF CURRENT USAGE SUMMARY AND DETAILS**
+    - **Purpose**: Get information of current usage summary and details.
+    - **Method**: GET
+    - **URL**: http://einstein.sv.cmu.edu:9005/estimator/adminPage">
+    - **Sample Usages**:
+      - **Command Line Example**: 
+          curl http://localhost:9005/estimator/adminPage
+      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
 [1]: http://einstein.sv.cmu.edu:9005/ "The Application Server running in the Smart Spaces Lab, CMUSV"
 
