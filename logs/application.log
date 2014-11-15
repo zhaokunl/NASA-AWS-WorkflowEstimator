@@ -604,3 +604,15 @@ Caused by: java.lang.NullPointerException: null
 	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386) ~[akka-actor_2.10.jar:2.2.0]
 	... 4 common frames omitted
 
+2014-11-15 16:57:39,091 - [INFO] - from play in main 
+datasource [jdbc:h2:file:data/db;DB_CLOSE_DELAY=-1] bound to JNDI as DefaultDS
+
+2014-11-15 16:57:39,614 - [INFO] - from play in main 
+database [default] connected at jdbc:h2:file:data/db
+
+2014-11-15 16:57:40,947 - [INFO] - from play in main 
+Application started (Prod)
+
+2014-11-15 16:57:41,121 - [INFO] - from play in main 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+

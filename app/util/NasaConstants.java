@@ -1,4 +1,4 @@
-C/*
+/*
  * Copyright (c) 2013 Carnegie Mellon University Silicon Valley. 
  * All rights reserved. 
  * 
@@ -14,8 +14,6 @@ C/*
  * questions.
  * 
  * */
-
-
 
 package util;
 
