@@ -7,6 +7,14 @@ SOC Fall 2014 NASA-AWS Project
 
 - JDK 7
 
+## Technology Set
+
+- **Language**: Java, html5
+
+- **Web Server App**: [Play! Framework](https://www.playframework.com/), REST API
+
+- **Host**: tmux
+
 ## Usage
 
 As a pre-requisite, you need to install `mongodb` and run it. Please find the installation guide [here](http://docs.mongodb.org/manual/installation/). 
