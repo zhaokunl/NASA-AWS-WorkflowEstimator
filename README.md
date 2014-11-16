@@ -63,12 +63,13 @@ Currently we are providing APIs in 3 categores:
    - [Get Virtual Machine Recommendation](#8)
 
 **Category 3: Registration**<br/>
-   - [Registration form](#9)
-   - [Submit](#10)
-   - [Update form](#11)
-   - [Update](#12)
-   - [Delete form](#13)
-   - [Admin page](#14)
+   - [Show user register page](#9)
+   - [Add a service user](#10)
+   - [Show user update page](#11)
+   - [Update a service user](#12)
+   - [Show user delete page](#13)
+   - [Delete a service user](#14)
+   - [Get information of current usage summary and details](#15)
 
 Detailed Usages:
 ----------------
@@ -246,40 +247,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9006/estimator/adminPage
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-16. <a name="16"></a>**Show report bugs page**
-    - **Purpose**: Show report new bugs page.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9006/bugs
-    - **Sample Usages**:
-      - **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9006/bugs
-      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found. 
-
-17. <a name="17"></a>**Bug report**
-    - **Purpose**: Report new bug.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9006/newReport
-    - **Semantics**:
-        - **name** : user name
-        - **title** : bug title
-        - **email** : email
-        - **organization** : organization
-        - **description** : description
-    - **Sample Usages**: 
-    	- **Command Line Example**: 
-            curl http://einstein.sv.cmu.edu:9006/newReport?name=<"username">&title=<"title">&email=<"email">
-      	- **Result**: HTTP 200 if the logged in successfully posted, HTTP 500 if failed.
-      
-18. <a name="18"></a>**Bug list**
-    - **Purpose**: List bug informations.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9006/bug/list
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          curl http://einstein.sv.cmu.edu:9006/bug/list
-      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
-     
-19. <a name="19"></a>**Dashboard**
+16. <a name="16"></a>**Dashboard**
     - **Purpose**: Get informtion about overall information.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/dashboard
@@ -288,7 +256,7 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
           curl http://einstein.sv.cmu.edu:9006/dashboard
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
 
-20. <a name="20"></a>**About us**
+17. <a name="17"></a>**About us**
     - **Purpose**: Get information about developers.
     - **Method**: GET
     - **URL**: http://einstein.sv.cmu.edu:9006/aboutus
