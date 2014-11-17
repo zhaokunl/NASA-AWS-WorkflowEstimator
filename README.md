@@ -3,6 +3,10 @@ NASA-AWS-WorkflowEstimator
 
 SOC Fall 2014 NASA-AWS Project
 
+## Demo site
+
+http://einstein.sv.cmu.edu:9006
+
 ## Dependencies
 
 - JDK 7
@@ -50,12 +54,8 @@ For the production mode in Play 2.x - run
 activator "start -Dhttp.port=9006"
 ```
 
-Service URL:
----------
-http://einstein.sv.cmu.edu:9006
+## APIs
 
-Overview:
----------
 Currently we are providing APIs in 3 categores:
 
 **Category 1: Account Management**<br/>
@@ -253,24 +253,6 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
     - **Sample Usages**:
       - **Command Line Example**: 
           curl http://einstein.sv.cmu.edu:9006/estimator/adminPage
-      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
-
-16. <a name="16"></a>**Dashboard**
-    - **Purpose**: Get informtion about overall information.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9006/dashboard
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          curl http://einstein.sv.cmu.edu:9006/dashboard
-      - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
-
-17. <a name="17"></a>**About us**
-    - **Purpose**: Get information about developers.
-    - **Method**: GET
-    - **URL**: http://einstein.sv.cmu.edu:9006/aboutus
-    - **Sample Usages**:
-      - **Command Line Example**: 
-          curl http://einstein.sv.cmu.edu:9006/aboutus
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
 [1]: http://einstein.sv.cmu.edu:9006/ "The Application Server running in the Smart Spaces Lab, CMUSV"
