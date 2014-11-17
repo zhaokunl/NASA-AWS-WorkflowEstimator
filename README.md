@@ -1,4 +1,4 @@
-<h1 align="center"> NASA-AWS-WorkflowEstimator</h1>
+<p align="center"> <img src='/public/images/icon.png'></img> </p>
 
 <h4 align="center"> SOC Fall 2014 NASA-AWS Project</h4>
 
