@@ -25,15 +25,15 @@
 <!-- toc stop -->
 
 
-## Demo site
+### Demo site
 
 http://einstein.sv.cmu.edu:9006
 
-## Dependencies
+### Dependencies
 
 - JDK 7
 
-## Technology Stack
+### Technology Stack
 
 - **Language**: Java, html5
 
@@ -41,7 +41,7 @@ http://einstein.sv.cmu.edu:9006
 
 - **Host**: tmux
 
-## Usage
+### Usage
 
 As a pre-requisite, you need to install `mongodb` and run it. Please find the installation guide [here](http://docs.mongodb.org/manual/installation/). 
 
@@ -76,7 +76,7 @@ For the production mode in Play 2.x - run
 activator "start -Dhttp.port=9006"
 ```
 
-## APIs
+### APIs
 
 Currently we are providing APIs in 3 categores:
 
@@ -102,9 +102,8 @@ Currently we are providing APIs in 3 categores:
    - [Get information of current usage summary and details](#15)
 
 Detailed Usages:
-----------------
-Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion from readable timestamp format to Unix epoch timestamp can be found in http://www.epochconverter.com
 
+####Account Management
 1. <a name="1"></a>**Log in**
     - **Purpose**: Log into the website with username and password.
     - **Method**: GET
@@ -146,6 +145,8 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
             curl http://einstein.sv.cmu.edu:9006/logout
       - **Result**: HTTP 200 if the logged out successfully, HTTP 500 if failed.
 
+####Recommodation
+
 5. <a name="5"></a>**Tutorial**
     - **Purpose**: Provide a turorial video about how to connect the vistrails workflow to the Einstein Website.
     - **Method**: GET
@@ -180,6 +181,8 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Command Line Example**: 
           curl http://einstein.sv.cmu.edu:9006/estimator/3
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
+
+####Registration
 
 9. <a name="9"></a>**Show user register page**
     - **Purpose**: Show user register page.
