@@ -1,7 +1,29 @@
-NASA-AWS-WorkflowEstimator
+<h1 align="center"> NASA-AWS-WorkflowEstimator</h1>
 ==========================
 
-SOC Fall 2014 NASA-AWS Project
+<h4 align="center"> SOC Fall 2014 NASA-AWS Project</h4>
+
+---
+
+---
+
+## Table of Contents
+
+<!-- toc -->
+
+* [Demo Site](#demo-site)
+* [Dependencies](#dependencies)
+* [Technogoly Stack](#technology-stack)
+* [Usage](#usage)
+* [APIs](#apis)
+  * [Account Management](#account-management)
+  * [Recommodation](#recommodation)
+  * [Registration](#registration)
+* [Going Forward](#going-forward)
+* [Support](#support)
+
+<!-- toc stop -->
+
 
 ## Demo site
 
@@ -11,7 +33,7 @@ http://einstein.sv.cmu.edu:9006
 
 - JDK 7
 
-## Technology Set
+## Technology Stack
 
 - **Language**: Java, html5
 
@@ -256,6 +278,8 @@ Note: all TimeStamps are in Unix epoch time format to millisecond. Conversion fr
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
 [1]: http://einstein.sv.cmu.edu:9006/ "The Application Server running in the Smart Spaces Lab, CMUSV"
+
+## Going Forward
 
 ## Support
 
