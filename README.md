@@ -1,5 +1,4 @@
 <h1 align="center"> NASA-AWS-WorkflowEstimator</h1>
-==========================
 
 <h4 align="center"> SOC Fall 2014 NASA-AWS Project</h4>
 
@@ -19,7 +18,6 @@
   * [Account Management](#account-management)
   * [Recommodation](#recommodation)
   * [Registration](#registration)
-* [Going Forward](#going-forward)
 * [Support](#support)
 
 <!-- toc stop -->
@@ -73,7 +71,7 @@ To specify a customized port:
 For the production mode in Play 2.x - run
 
 ```
-activator "start -Dhttp.port=9006"
+play "start -Dhttp.port=9006"
 ```
 
 ### APIs
@@ -281,8 +279,6 @@ Detailed Usages:
       - **Result**: HTTP 200 if returned successfully, HTTP 404 if not found.
       
 [1]: http://einstein.sv.cmu.edu:9006/ "The Application Server running in the Smart Spaces Lab, CMUSV"
-
-## Going Forward
 
 ## Support
 
