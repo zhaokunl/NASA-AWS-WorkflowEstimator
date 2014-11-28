@@ -47,6 +47,12 @@ public class Application extends Controller {
 				inStream.close();
 				outStream.close();
 				// upload the new file to s3
+				if(fileName == null) {
+					System.out.println("what???");
+				}
+				if(newfile == null) {
+					System.out.println("why???");
+				}
 				AWSClient.upload(newfile, fileName);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block

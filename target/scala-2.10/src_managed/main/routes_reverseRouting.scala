@@ -1,6 +1,6 @@
 // @SOURCE:/Users/zhaokunli/NASA-AWS-WorkflowEstimator/conf/routes
-// @HASH:5bf45acbeaddad6ac1e7aacac4176cb29411e266
-// @DATE:Sat Nov 15 16:57:03 EST 2014
+// @HASH:fe2bbe085b3a9d155f4b5848833d600013ddf4f9
+// @DATE:Sun Nov 16 23:17:24 EST 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,13 +13,14 @@ import play.libs.F
 import Router.queryString
 
 
+// @LINE:38
 // @LINE:37
 // @LINE:36
 // @LINE:35
 // @LINE:34
 // @LINE:33
 // @LINE:32
-// @LINE:31
+// @LINE:29
 // @LINE:28
 // @LINE:27
 // @LINE:26
@@ -50,53 +51,53 @@ def aboutus(): Call = {
 }
                           
 
+// @LINE:38
 // @LINE:37
 // @LINE:36
 // @LINE:35
 // @LINE:34
 // @LINE:33
 // @LINE:32
-// @LINE:31
 class ReverseNasaRegistrationController {
     
 
-// @LINE:36
+// @LINE:37
 def delete(): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "estimator/deleteUser/delete")
 }
                                                 
 
-// @LINE:35
+// @LINE:36
 def deleteForm(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "estimator/deleteUser")
 }
                                                 
 
-// @LINE:37
+// @LINE:38
 def adminPage(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "estimator/adminPage")
 }
                                                 
 
-// @LINE:32
+// @LINE:33
 def submit(): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "estimator/register/publish")
 }
                                                 
 
-// @LINE:33
+// @LINE:34
 def updateForm(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "estimator/updateUser")
 }
                                                 
 
-// @LINE:34
+// @LINE:35
 def update(): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "estimator/updateUser/update")
 }
                                                 
 
-// @LINE:31
+// @LINE:32
 def registrationForm(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "estimator/register")
 }
@@ -118,6 +119,7 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:29
 // @LINE:28
 // @LINE:27
 // @LINE:26
@@ -134,44 +136,52 @@ def at(file:String): Call = {
 class ReverseApplication {
     
 
-// @LINE:23
+// @LINE:24
 def estimate3(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "estimator/3")
 }
                                                 
 
-// @LINE:22
+// @LINE:23
 def estimate2(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "estimator/2")
 }
                                                 
 
-// @LINE:28
+// @LINE:29
 def accountSummary(userName:String = null): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "estimator/accountSummary" + queryString(List(if(userName == null) None else Some(implicitly[QueryStringBindable[String]].unbind("userName", userName)))))
 }
                                                 
 
-// @LINE:24
+// @LINE:25
 def tutorial(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "estimator/tutorial")
 }
                                                 
 
+// @LINE:22
 // @LINE:21
 def estimate1(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "estimator/1")
+   () match {
+// @LINE:21
+case () if true => Call("GET", _prefix + { _defaultPrefix } + "estimator/1")
+                                                        
+// @LINE:22
+case () if true => Call("POST", _prefix + { _defaultPrefix } + "estimator/1")
+                                                        
+   }
 }
                                                 
 
-// @LINE:27
+// @LINE:28
 // @LINE:11
 def logout(): Call = {
    () match {
 // @LINE:11
 case () if true => Call("GET", _prefix + { _defaultPrefix } + "logout")
                                                         
-// @LINE:27
+// @LINE:28
 case () if true => Call("GET", _prefix + { _defaultPrefix } + "estimator/logout")
                                                         
    }
@@ -192,28 +202,28 @@ case (email, vfile, dataset) if true => Call("GET", _prefix + { _defaultPrefix }
 }
                                                 
 
-// @LINE:26
+// @LINE:27
 // @LINE:10
 def authenticate(): Call = {
    () match {
 // @LINE:10
 case () if true => Call("POST", _prefix + { _defaultPrefix } + "login")
                                                         
-// @LINE:26
+// @LINE:27
 case () if true => Call("POST", _prefix + { _defaultPrefix } + "estimator/login")
                                                         
    }
 }
                                                 
 
-// @LINE:25
+// @LINE:26
 // @LINE:9
 def login(): Call = {
    () match {
 // @LINE:9
 case () if true => Call("GET", _prefix + { _defaultPrefix } + "login")
                                                         
-// @LINE:25
+// @LINE:26
 case () if true => Call("GET", _prefix + { _defaultPrefix } + "estimator/login")
                                                         
    }
@@ -226,13 +236,14 @@ case () if true => Call("GET", _prefix + { _defaultPrefix } + "estimator/login")
                   
 
 
+// @LINE:38
 // @LINE:37
 // @LINE:36
 // @LINE:35
 // @LINE:34
 // @LINE:33
 // @LINE:32
-// @LINE:31
+// @LINE:29
 // @LINE:28
 // @LINE:27
 // @LINE:26
@@ -268,17 +279,17 @@ def aboutus : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:38
 // @LINE:37
 // @LINE:36
 // @LINE:35
 // @LINE:34
 // @LINE:33
 // @LINE:32
-// @LINE:31
 class ReverseNasaRegistrationController {
     
 
-// @LINE:36
+// @LINE:37
 def delete : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.NasaRegistrationController.delete",
    """
@@ -289,7 +300,7 @@ def delete : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:35
+// @LINE:36
 def deleteForm : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.NasaRegistrationController.deleteForm",
    """
@@ -300,7 +311,7 @@ def deleteForm : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:37
+// @LINE:38
 def adminPage : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.NasaRegistrationController.adminPage",
    """
@@ -311,7 +322,7 @@ def adminPage : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:32
+// @LINE:33
 def submit : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.NasaRegistrationController.submit",
    """
@@ -322,7 +333,7 @@ def submit : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:33
+// @LINE:34
 def updateForm : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.NasaRegistrationController.updateForm",
    """
@@ -333,7 +344,7 @@ def updateForm : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:34
+// @LINE:35
 def update : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.NasaRegistrationController.update",
    """
@@ -344,7 +355,7 @@ def update : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:31
+// @LINE:32
 def registrationForm : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.NasaRegistrationController.registrationForm",
    """
@@ -376,6 +387,7 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:29
 // @LINE:28
 // @LINE:27
 // @LINE:26
@@ -392,7 +404,7 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 class ReverseApplication {
     
 
-// @LINE:23
+// @LINE:24
 def estimate3 : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.estimate3",
    """
@@ -403,7 +415,7 @@ def estimate3 : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:22
+// @LINE:23
 def estimate2 : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.estimate2",
    """
@@ -414,7 +426,7 @@ def estimate2 : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:28
+// @LINE:29
 def accountSummary : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.accountSummary",
    """
@@ -425,7 +437,7 @@ def accountSummary : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:24
+// @LINE:25
 def tutorial : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.tutorial",
    """
@@ -436,18 +448,24 @@ def tutorial : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
+// @LINE:22
 // @LINE:21
 def estimate1 : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.estimate1",
    """
       function() {
+      if (true) {
       return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "estimator/1"})
+      }
+      if (true) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "estimator/1"})
+      }
       }
    """
 )
                         
 
-// @LINE:27
+// @LINE:28
 // @LINE:11
 def logout : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.logout",
@@ -481,7 +499,7 @@ def index : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:26
+// @LINE:27
 // @LINE:10
 def authenticate : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.authenticate",
@@ -498,7 +516,7 @@ def authenticate : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:25
+// @LINE:26
 // @LINE:9
 def login : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.login",
@@ -521,13 +539,14 @@ def login : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
+// @LINE:38
 // @LINE:37
 // @LINE:36
 // @LINE:35
 // @LINE:34
 // @LINE:33
 // @LINE:32
-// @LINE:31
+// @LINE:29
 // @LINE:28
 // @LINE:27
 // @LINE:26
@@ -559,53 +578,53 @@ def aboutus(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 }
                           
 
+// @LINE:38
 // @LINE:37
 // @LINE:36
 // @LINE:35
 // @LINE:34
 // @LINE:33
 // @LINE:32
-// @LINE:31
 class ReverseNasaRegistrationController {
     
 
-// @LINE:36
+// @LINE:37
 def delete(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.NasaRegistrationController.delete(), HandlerDef(this, "controllers.NasaRegistrationController", "delete", Seq(), "POST", """""", _prefix + """estimator/deleteUser/delete""")
 )
                       
 
-// @LINE:35
+// @LINE:36
 def deleteForm(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.NasaRegistrationController.deleteForm(), HandlerDef(this, "controllers.NasaRegistrationController", "deleteForm", Seq(), "GET", """""", _prefix + """estimator/deleteUser""")
 )
                       
 
-// @LINE:37
+// @LINE:38
 def adminPage(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.NasaRegistrationController.adminPage(), HandlerDef(this, "controllers.NasaRegistrationController", "adminPage", Seq(), "GET", """""", _prefix + """estimator/adminPage""")
 )
                       
 
-// @LINE:32
+// @LINE:33
 def submit(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.NasaRegistrationController.submit(), HandlerDef(this, "controllers.NasaRegistrationController", "submit", Seq(), "POST", """""", _prefix + """estimator/register/publish""")
 )
                       
 
-// @LINE:33
+// @LINE:34
 def updateForm(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.NasaRegistrationController.updateForm(), HandlerDef(this, "controllers.NasaRegistrationController", "updateForm", Seq(), "GET", """""", _prefix + """estimator/updateUser""")
 )
                       
 
-// @LINE:34
+// @LINE:35
 def update(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.NasaRegistrationController.update(), HandlerDef(this, "controllers.NasaRegistrationController", "update", Seq(), "POST", """""", _prefix + """estimator/updateUser/update""")
 )
                       
 
-// @LINE:31
+// @LINE:32
 def registrationForm(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.NasaRegistrationController.registrationForm(), HandlerDef(this, "controllers.NasaRegistrationController", "registrationForm", Seq(), "GET", """Registration""", _prefix + """estimator/register""")
 )
@@ -627,6 +646,7 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:29
 // @LINE:28
 // @LINE:27
 // @LINE:26
@@ -643,25 +663,25 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 class ReverseApplication {
     
 
-// @LINE:23
+// @LINE:24
 def estimate3(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.estimate3(), HandlerDef(this, "controllers.Application", "estimate3", Seq(), "GET", """""", _prefix + """estimator/3""")
 )
                       
 
-// @LINE:22
+// @LINE:23
 def estimate2(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.estimate2(), HandlerDef(this, "controllers.Application", "estimate2", Seq(), "GET", """""", _prefix + """estimator/2""")
 )
                       
 
-// @LINE:28
+// @LINE:29
 def accountSummary(userName:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.accountSummary(userName), HandlerDef(this, "controllers.Application", "accountSummary", Seq(classOf[String]), "GET", """""", _prefix + """estimator/accountSummary""")
 )
                       
 
-// @LINE:24
+// @LINE:25
 def tutorial(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.tutorial(), HandlerDef(this, "controllers.Application", "tutorial", Seq(), "GET", """""", _prefix + """estimator/tutorial""")
 )
